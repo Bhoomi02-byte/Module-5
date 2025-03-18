@@ -1,0 +1,411 @@
+Blog Application:-
+
+-> Build the blog application that can perform CRUD (Create, Delete, Update, Delete) operations
+   on blog posts using restful apis.
+
+   Two users:-
+
+        1) Author:- i) Author can login and create categories on the platform.
+                    ii) Author can then further write the post.
+                    iii) Author can then firther write the post under the category.
+
+       
+
+       2) Viewers:- i)Users can also subscribe to any author of their choice.
+                    ii)Viewers can also comments on posts
+                    iii)Viewers can also like and comment on the post they need to login.
+
+        
+    
+      Post contains :- i)banner image
+                      ii) title
+                      iii) content
+
+
+    Authentication and Management
+     
+         1) Register a author or subscriber - post  api/auth/register
+       
+                Description-> ->Subscriber or Author register a application using this endpoint.
+                             ->Based on role , the Author or viewer login.
+                             ->Register a new author or subscriber. Based on the role specified, 
+                                a user can either be an author (who can create posts) 
+                               or a subscriber (who can follow authors and interact with posts).
+
+                Request Body(JSON):
+                {
+              
+                  "name": "Bhoomi"
+                  "email": "bhoomi@gmail.com"
+                  "password": "Bhoomi#12"
+                  "role": "author"
+
+          
+                }
+                Response
+                {
+                 "message": "user registered successfully"
+                 "userId": 1
+                }
+
+         -------------------------------------------------------------------------------------
+
+        2) User login - POST  api/auth/login
+
+               Description-> ->Registered author to log in.
+                             ->Registered user to log in
+                             ->Allows a registered user (author or subscriber) to log in and receive a JWT token for authentication.
+
+
+               Request Body(JSON):
+               {
+             
+                 "email": "bhoomi@gmail.com"
+                 "password": "iiiiii"
+               }
+
+               Response
+               {
+                 "token": "jwt-auth-token"
+                 "userId":1
+                 "role": "author"
+            
+               }
+               Token is required for accessing protected routes.
+
+
+         ----------------------------------------------------------------------------------------
+
+        3) Create a new blog post - POST  api/posts
+         
+               Description-> Author to create a blog post.
+               ->Requires Authentication for author .
+               ->Only an authenticated author can create a post.
+               Headers:
+               {
+                  "Authorization": "Bearer jwt-auth-token"
+               }
+
+               Request Body(JSON):
+               {
+             
+                     "title": "How to learn .NET Core",
+                     "image": "url",
+                     "content": "Detailed explanation of .NET Core" 
+               }
+
+               Response
+               {
+                 "message": "Post created successfully"
+                 "postId": 1
+            
+               }
+
+         ------------------------------------------------------------------------------------------
+         
+         4) Get All blog posts - GET  api/posts
+         
+                Description-> Fetches all blog post.
+                ->It is public API.
+                ->No authentication required
+                ->Anyone can view all posts.
+
+                
+
+                Response
+                   [
+                    {
+                         "postId":1,
+                         "title": "How to learn .NET Core",
+                         "image": "url",
+                         "content": "Detailed explanation of .NET Core" 
+                         "publishedDate": "2025-03-17"
+                         "likes":13,
+                         "commentsCount": 5
+                       }
+                   ]
+
+         -------------------------------------------------------------------------------------------
+
+          5) Get a single post details - GET  api/posts/{postId}
+
+               Description-> fetch a single post details
+               ->It is public API.
+               ->No authentication required
+               ->Anyone can view a single blog post.
+               
+               Response
+                 [
+                 {
+                  "postId":1,
+                  "title": "How to learn .NET Core",
+                  "image": "url",
+                  "content": "Detailed explanation of .NET Core" 
+                  "publishedDate": "2025-03-17"
+                  "likes":13,
+                  "commentsDetails": [
+                      {
+                       "commentId": 1,
+                       "text": "nice article",
+                       "commentedBy": "Diksha",
+                       "commentedAt": "2025-03-17"
+                      }
+                   ]
+
+                 }]
+
+          ----------------------------------------------------------------------------------------------
+       
+          6)Update a blog post- PUT  api/posts/{postId}
+             
+            Description-> update a blog post
+            ->Requires Authentication for author 
+            ->Only the post author can update.
+
+             Headers:
+                {
+                  "Authorization": "Bearer jwt-auth-token"
+                }
+
+             Request
+               {
+                "title": "How to learn ASP .NET Core",
+                "image": "new_url",
+                "content": "Detailed explanation of ASP.NET Core" 
+               }
+
+             Response
+               {
+                 "message": "post updated successfully"
+
+               }
+
+          ------------------------------------------------------------------------------------------------
+
+          7) Delete a blog post - DELETE  api/post/{postId}
+
+              Description-> delete a blog post
+              ->Authentication Required.
+              ->Only the post author can delete.
+
+
+              Reponse
+                  {
+                    "message": "post deleted successfully"
+
+                  }
+
+         ---------------------------------------------------------------------------------------------------
+
+          8) Subscribe the author - POST  api/subscriptions
+             
+             Authentication required (user only)
+             Description-> Subscribe the author by the user(viewers)
+
+             Request
+               {
+                 "authorId":1
+                 "subscriberId":2
+               }
+
+             Response
+                {
+                 "message": "Successfully subscribed to bhoomi"
+                }
+
+          ----------------------------------------------------------------------------------------------------
+
+          9) Unsubscribe from an author - DELETE api/subscriptions/{authorId}
+             
+             Authentication Required only for subscriber
+             Description-> Unsubscribe by the author
+              Authentication Required
+              Only the post author can unsubscribe.
+
+             Request
+                 {
+                   "message": "successfully unsubscribed"
+                 }
+
+          -------------------------------------------------------------------------------------------------
+
+          10) Comments on a Post - POST api/posts/{postId}/comments
+             
+             Authentication Required for Subscriber or Author.
+
+
+
+             Request
+                {
+                  "userId":2,
+                  "text": "Nice Article! Great"
+                }
+             Response
+                {
+                  "message":"Comment Added successfully"
+                }
+
+         --------------------------------------------------------------------------------------------------
+
+         11) get comments of blog post - GET  api/posts/{postId}/comments/{commentId}
+              
+
+            Response
+            [
+                  {
+                    "commentId": 1,
+                    "text": "Nice article!",
+                    "commentedBy": "Diksha",
+                    "commentedAt": "2025-03-17"
+                  }
+            ]
+
+        -------------------------------------------------------------------------------------------------
+
+        12) delete a comment - DELETE  api/posts/{postId}/comments/{commentId}
+           
+           Allow an author can delete a comment with authorization.
+           Authentication Required  (only Author can do it)
+         
+            {
+            "Authorization": "Bearer jwt-auth-token"
+            }
+
+            Response
+              {
+                "message":"deleted a comment successfully"
+              }
+
+       ---------------------------------------------------------------------------------------------------
+
+        13) Like a Post - POST api/posts/{postId}/like
+
+           Allow a user/author can like the post.
+           Authentication Required
+
+           Headers
+             {
+              "Authorization": "Bearer jwt-auth-token"
+             }
+
+           Response
+            {
+              "message": "Post liked successfully"
+            }
+
+       ---------------------------------------------------------------------------------------------------
+
+        14)Unlike a Post - DELETE  api/posts/{postId}/like
+            
+            Allow a user/author can unlike the post.
+             Authentication Required
+              {
+               "Authorization": "Bearer jwt-auth-token"
+              }
+
+            Response
+            
+               {
+                 "message": "Post removed successfully"
+
+               }
+
+        -----------------------------------------------------------------------------------------------------
+
+        15)Notification - GET api/notifications
+
+            Retrieves notification for the author.
+            Authentication Required
+              {
+                 "Authorization": "Bearer jwt-auth-token"
+              }
+
+            Response
+            [
+                {
+                  "notificationId": 201,
+                  "message": "Bhoomi published a new article",
+                  "timestamp": "2025-03-17"
+              
+                }
+            ]
+       -----------------------------------------------------------------------------------------------------
+         
+         16)Get Author Profile - GET api/authors/{authorId}
+
+            Author's authentication required
+                {
+                     "Authorization": "Bearer jwt-auth-token"
+                }
+
+              Response
+              {
+                 "userId" : 1,
+                 "name" : "Bhoomi",
+                 "bio" : "Software developer",
+                 "profile picture": "url_image",
+                 "github": "https://github.com/Bhoomi02-byte"
+
+
+              }
+
+        ----------------------------------------------------------------------------------------------------
+
+          17)Update Author Profile - PUT api/posts/{authorId}
+              
+              Author to update their profile
+
+              Request->
+
+               {
+                 "userId" : 1,
+                 "name" : "Bhoomi Agarwal",
+                 "bio" : "Software developer 2",
+                 "profile picture": "new_url_image",
+                 "github": "https://github.com/Bhoomi02-byte"
+
+
+              }
+
+              Response->
+
+               {
+                "message" : "Profile updated successfully"
+               }
+
+
+            
+
+
+            
+
+           
+
+             
+
+
+           
+
+            
+         
+            
+
+           
+       
+        
+         
+        
+       
+        
+        
+       
+
+
+       
+           
+
+                
+    
+
+   
+
