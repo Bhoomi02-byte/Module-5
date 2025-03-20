@@ -13,6 +13,8 @@ namespace Module_5
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 
             var app = builder.Build();
 
@@ -26,7 +28,7 @@ namespace Module_5
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseExceptionHandler();
 
             app.MapControllers();
 
