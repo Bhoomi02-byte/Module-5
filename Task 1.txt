@@ -1,6 +1,6 @@
 Blog Application:-
 
--> Build the blog application that can perform CRUD (Create, Delete, Update, Delete) operations
+-> Build the blog application that can perform CRUD (Create,Read, Update, Delete) operations
    on blog posts using restful apis.
 
    Two users:-
@@ -377,7 +377,7 @@ Blog Application:-
 
               1) Subscribe the author - POST  api/user/{userId}/subscribe
              
-                 Authentication required (user only)
+                 ->Authentication required (user only)
                  Description-> Subscribe the author by the user(viewers)
 
                   ->Using the userId of author for subscribing. 
@@ -391,10 +391,10 @@ Blog Application:-
 
               2) Unsubscribe from an author - DELETE api/users/{userId}/unsubscribe
              
-                 Authentication Required only for subscriber
-                 Description-> Unsubscribe by the author
-                  Authentication Required
-                  Only the post author can unsubscribe.
+                 ->Authentication Required only for subscriber
+                   Description-> Unsubscribe by the author
+                  
+                  ->Only the post author can unsubscribe.
 
                  Request
                      {
