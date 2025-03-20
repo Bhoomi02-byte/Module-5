@@ -7,19 +7,19 @@ Blog Application:-
 
         1) Author:- i) Author can login and create categories on the platform.
                     ii) Author can then further write the post.
-                    iii) Author can then firther write the post under the category.
+                    iii) Author can then further write the post under the category.
 
        
 
        2) Viewers:- i)Users can also subscribe to any author of their choice.
                     ii)Viewers can also comments on posts
-                    iii)Viewers can also like and comment on the post they need to login.
+                    iii)Viewers can also like and comment on the post but they need to login.
 
         
-    
-      Post contains :- i)banner image
+     
+      Post contains :- i) banner image
                       ii) title
-                      iii) content
+                     iii) content
 
 
     Authentication and Management
@@ -33,22 +33,24 @@ Blog Application:-
                                or a subscriber (who can follow authors and interact with posts).
 
                 Request Body(JSON):
-                {
+                    {
               
-                  "name": "Bhoomi"
-                  "email": "bhoomi@gmail.com"
-                  "password": "Bhoomi#12"
-                  "role": "author"
+                      "name": "Bhoomi"
+                      "email": "bhoomi@gmail.com"
+                      "password": "iiiiiiii"
+                      "role": "author"
 
           
-                }
-                Response
-                {
-                 "message": "user registered successfully"
-                 "userId": 1
-                }
+                    }
+                    Response
+                    {
+                     "message": "user registered successfully"
+                     "userId": 1
+                    }
+                Token is created for the user to access protected routes.
+                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-         -------------------------------------------------------------------------------------
 
         2) User login - POST  api/auth/login
 
@@ -74,60 +76,185 @@ Blog Application:-
                Token is required for accessing protected routes.
 
 
-         ----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        3) Create a new blog post - POST  api/posts
+        3) Get User Profile - GET api/user/{userId}
+           
+           ->Allow to get author profile
+           ->User to view their profile.
+           ->Author's authentication required for viewing profile.
+              
+            Headers
+            Author's authentication required
+                {
+                     "Authorization": "Bearer jwt-auth-token"
+                }
+
+              Response
+              {
+                 "userId" : 1,
+                 "name" : "Bhoomi",
+                 "email" :"bhoomi@gmail.com",
+                 "role": "author",
+                 
+              }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        4) Update User Profile - PUT api/user/{userId}
+              
+              ->User to update their profile.
+              ->Author's authentication required for updating profile.
+
+              Request->
+                   {
+                     "userId" : 1,
+                     "name" : "Bhoomi Agarwal",
+                     "email" :"bhoomi123@gmail.com",
+                     "role": "author",
+               
+                    }
+
+              Response->
+
+                   {
+                    "message" : "Profile updated successfully"
+                   }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        5) Delete Author Profile - DELETE api/user/{userId}
+              
+              ->User to delete their profile.
+              ->Author's authentication required for deleting profile.
+              ->Only the post author can delete.
+
+           Response
+               {
+                "message" : "Profile deleted successfully"
+               }
+
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        6) Create a Category - POST api/user/categories
+         
+               Description-> Author to create a category.
+               ->Requires Authentication for author .
+               ->Only an authenticated author can create a category.
+
+                   Headers:
+                       {
+                          "Authorization": "Bearer jwt-auth-token"
+                       }
+
+                   Request Body(JSON):
+                       {
+             
+                             "categoryName": "Technology",
+                             "description": "Technology related posts" 
+                       }
+                   Response
+                       {
+                         "message": "Category created successfully"
+                         "categoryId": 1
+            
+                       }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        7) Get All Categories - GET api/categories
+         
+                Description-> Fetches all categories.
+                ->It is public API.
+                ->No authentication required
+                ->Anyone can view all categories.
+
+                Response
+                   [
+                    {
+                         "categoryId":1,
+                         "categoryName": "Technology",
+                         "description": "Technology related posts" 
+                       }
+                   ]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         8)Delete a Category - DELETE api/categories/{categoryId}
+              
+              Description-> delete a category
+              ->Authentication Required.
+              ->Only the post author can delete.
+              Reponse
+                  {
+                    "message": "Category deleted successfully"
+                  }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+           
+         Blog Management 
+
+
+           1) Create a blog post under specific category - POST  api/posts/category/{categoryId}
          
                Description-> Author to create a blog post.
                ->Requires Authentication for author .
                ->Only an authenticated author can create a post.
+
                Headers:
-               {
-                  "Authorization": "Bearer jwt-auth-token"
-               }
+                   {
+                      "Authorization": "Bearer jwt-auth-token"
+                   }
 
                Request Body(JSON):
-               {
+                   {
              
-                     "title": "How to learn .NET Core",
-                     "image": "url",
-                     "content": "Detailed explanation of .NET Core" 
-               }
+                         "title": "How to learn .NET Core",
+                         "image": "url",
+                         "content": "Detailed explanation of .NET Core" 
+                   }
 
                Response
-               {
-                 "message": "Post created successfully"
-                 "postId": 1
+                   {
+                     "message": "Post created successfully"
+                     "postId": 1
             
-               }
+                   }
 
-         ------------------------------------------------------------------------------------------
          
-         4) Get All blog posts - GET  api/posts
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         
+         2) Get All blog posts under category - GET  api/posts/category/{categoryId}
          
                 Description-> Fetches all blog post.
                 ->It is public API.
                 ->No authentication required
                 ->Anyone can view all posts.
-
-                
+                ->Fetches all blog posts under a specific category.
 
                 Response
                    [
                     {
-                         "postId":1,
+                        "postId": 1,
                          "title": "How to learn .NET Core",
                          "image": "url",
                          "content": "Detailed explanation of .NET Core" 
-                         "publishedDate": "2025-03-17"
-                         "likes":13,
-                         "commentsCount": 5
+                         
+                       }
+                       {
+                         "postId": 2,
+                         "title": "How to learn ASP .NET Core",
+                         "image": "url",
+                         "content": "Detailed explanation of ASP.NET Core" 
+                         
                        }
                    ]
 
-         -------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          5) Get a single post details - GET  api/posts/{postId}
+         3) Get a single post details - GET  api/posts/{postId}
 
                Description-> fetch a single post details
                ->It is public API.
@@ -136,39 +263,33 @@ Blog Application:-
                
                Response
                  [
-                 {
-                  "postId":1,
-                  "title": "How to learn .NET Core",
-                  "image": "url",
-                  "content": "Detailed explanation of .NET Core" 
-                  "publishedDate": "2025-03-17"
-                  "likes":13,
-                  "commentsDetails": [
-                      {
-                       "commentId": 1,
-                       "text": "nice article",
-                       "commentedBy": "Diksha",
-                       "commentedAt": "2025-03-17"
-                      }
-                   ]
-
-                 }]
-
-          ----------------------------------------------------------------------------------------------
+                     {
+                      "postId": 1,"
+                      "title": "How to learn .NET Core",
+                      "image": "url",
+                      "content": "Detailed explanation of .NET Core" 
+              
+                     }
+                 ]
+                 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
        
-          6)Update a blog post- PUT  api/posts/{postId}
+         4)Update a blog post- PUT  api/posts/{postId}
              
-            Description-> update a blog post
-            ->Requires Authentication for author 
+            Description-> update a blog post 
+            ->Requires Authentication for author.
             ->Only the post author can update.
 
              Headers:
+
                 {
                   "Authorization": "Bearer jwt-auth-token"
                 }
 
              Request
+
                {
+               "postId": 1,
                 "title": "How to learn ASP .NET Core",
                 "image": "new_url",
                 "content": "Detailed explanation of ASP.NET Core" 
@@ -180,9 +301,9 @@ Blog Application:-
 
                }
 
-          ------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          7) Delete a blog post - DELETE  api/post/{postId}
+          5) Delete a blog post - DELETE  api/post/{postId}
 
               Description-> delete a blog post
               ->Authentication Required.
@@ -194,185 +315,198 @@ Blog Application:-
                     "message": "post deleted successfully"
 
                   }
+                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-         ---------------------------------------------------------------------------------------------------
+            6)Publish a Blog Post - PUT api/posts/{postId}/publish
 
-          8) Subscribe the author - POST  api/subscriptions
+                ->Allows an authenticated author to publish their blog post.
+                ->Only the post author can publish their own post.
+                ->Once published, the post becomes publicly visible.
+
+                Headers
+                
+                    {
+                      "Authorization": "Bearer jwt-auth-token"
+                    }
+
+                Request
+                
+                    {
+                      "status": "published"
+                    }
+
+                Response
+                
+                    {
+                      "message": "Post published successfully",
+                      "postId": 1,
+                      "status": "published"
+                    }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+            7) Unpublish a Blog Post - PUT api/posts/{postId}/unpublish
+
+                ->Allows an authenticated author to unpublish their blog post.
+                ->Only the post author can unpublish their own post.
+                ->Once unpublished, the post will not be visible publicly.
+
+                Headers
+                
+                    {
+                      "Authorization": "Bearer jwt-auth-token"
+                    }
+                Request
+                
+                    {
+                      "status": "unpublished"
+                    }
+
+                Response
+                
+                   {
+                      "message": "Post unpublished successfully",
+                      "postId": 1,
+                      "status": "unpublished"
+                   }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+          Viewer Management
+
+              1) Subscribe the author - POST  api/user/{userId}/subscribe
              
-             Authentication required (user only)
-             Description-> Subscribe the author by the user(viewers)
+                 Authentication required (user only)
+                 Description-> Subscribe the author by the user(viewers)
 
-             Request
-               {
-                 "authorId":1
-                 "subscriberId":2
-               }
+                  ->Using the userId of author for subscribing. 
 
-             Response
-                {
-                 "message": "Successfully subscribed to bhoomi"
-                }
+                 Response in JSON
+                    {
+                     "message": "Successfully subscribed to bhoomi"
+                    }
 
-          ----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          9) Unsubscribe from an author - DELETE api/subscriptions/{authorId}
+              2) Unsubscribe from an author - DELETE api/users/{userId}/unsubscribe
              
-             Authentication Required only for subscriber
-             Description-> Unsubscribe by the author
-              Authentication Required
-              Only the post author can unsubscribe.
+                 Authentication Required only for subscriber
+                 Description-> Unsubscribe by the author
+                  Authentication Required
+                  Only the post author can unsubscribe.
 
-             Request
-                 {
-                   "message": "successfully unsubscribed"
-                 }
+                 Request
+                     {
+                       "message": "successfully unsubscribed"
+                     }
 
-          -------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          10) Comments on a Post - POST api/posts/{postId}/comments
-             
-             Authentication Required for Subscriber or Author.
+          Comment section-
+
+              1) Comments on a Post - POST api/posts/{postId}/comments
+
+
+                 Authentication Required for Subscriber or Author.
+                 Description-> Allow a user/author can comment on the post.
 
 
 
-             Request
-                {
-                  "userId":2,
-                  "text": "Nice Article! Great"
-                }
-             Response
-                {
-                  "message":"Comment Added successfully"
-                }
 
-         --------------------------------------------------------------------------------------------------
+                 Request
+                    {
+                      "userId":2,
+                      "text": "Nice Article! Great"
+                    }
+                 Response
+                    {
+                      "message":"Comment Added successfully"
+                    }
 
-         11) get comments of blog post - GET  api/posts/{postId}/comments/{commentId}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+             2) Get comments of blog post - GET  api/posts/{postId}/comments/{commentId}
               
+               Author to get comments of blog post.
+               ->It is public API.
+              ->No authentication required
+              ->Anyone can view all comments.
 
-            Response
-            [
-                  {
-                    "commentId": 1,
-                    "text": "Nice article!",
-                    "commentedBy": "Diksha",
-                    "commentedAt": "2025-03-17"
-                  }
-            ]
+                Response
+                [
+                      {
+                        "commentId": 1,
+                        "text": "Nice article!",
+                    
+                      }
+                ]
 
-        -------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        12) delete a comment - DELETE  api/posts/{postId}/comments/{commentId}
+            3) Delete a comment - DELETE  api/posts/{postId}/comments/{commentId}
            
-           Allow an author can delete a comment with authorization.
-           Authentication Required  (only Author can do it)
-         
-            {
-            "Authorization": "Bearer jwt-auth-token"
-            }
+               ->Allow an author can delete a comment with authorization.
+               ->It can be done by Author only.
+               ->Only the post author can delete.
+               
+               Authentication Required  (only Author can do it).
+                
+                 Headers
+                   {
+                    "Authorization": "Bearer jwt-auth-token"
+                   }
 
-            Response
-              {
-                "message":"deleted a comment successfully"
-              }
+                Response
+                  {
+                    "message":"deleted a comment successfully"
+                  }
 
-       ---------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        13) Like a Post - POST api/posts/{postId}/like
+       Like/Unlike a Post:-
 
-           Allow a user/author can like the post.
-           Authentication Required
+            1) Like a Post - POST api/posts/{postId}/like
 
-           Headers
-             {
-              "Authorization": "Bearer jwt-auth-token"
-             }
+                   ->Allow a user/author can like the post.
+                   ->Authentication Required
 
-           Response
-            {
-              "message": "Post liked successfully"
-            }
+                   Headers
+                     {
+                      "Authorization": "Bearer jwt-auth-token"
+                     }
 
-       ---------------------------------------------------------------------------------------------------
+                   Response
+                    {
+                      "message": "Post liked successfully"
+                    }
 
-        14)Unlike a Post - DELETE  api/posts/{postId}/like
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+           2) Unlike a Post - DELETE  api/posts/{postId}/like
             
-            Allow a user/author can unlike the post.
-             Authentication Required
-              {
-               "Authorization": "Bearer jwt-auth-token"
-              }
+                ->Allow a user/author can unlike the post.
+             
+                 Authentication Required
+                  {
+                   "Authorization": "Bearer jwt-auth-token"
+                  }
 
-            Response
+                Response
             
-               {
-                 "message": "Post removed successfully"
+                   {
+                     "message": "Post removed successfully"
 
-               }
+                   }
 
-        -----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        15)Notification - GET api/notifications
-
-            Retrieves notification for the author.
-            Authentication Required
-              {
-                 "Authorization": "Bearer jwt-auth-token"
-              }
-
-            Response
-            [
-                {
-                  "notificationId": 201,
-                  "message": "Bhoomi published a new article",
-                  "timestamp": "2025-03-17"
-              
-                }
-            ]
-       -----------------------------------------------------------------------------------------------------
          
-         16)Get Author Profile - GET api/authors/{authorId}
+        
 
-            Author's authentication required
-                {
-                     "Authorization": "Bearer jwt-auth-token"
-                }
+      
 
-              Response
-              {
-                 "userId" : 1,
-                 "name" : "Bhoomi",
-                 "bio" : "Software developer",
-                 "profile picture": "url_image",
-                 "github": "https://github.com/Bhoomi02-byte"
-
-
-              }
-
-        ----------------------------------------------------------------------------------------------------
-
-          17)Update Author Profile - PUT api/posts/{authorId}
-              
-              Author to update their profile
-
-              Request->
-
-               {
-                 "userId" : 1,
-                 "name" : "Bhoomi Agarwal",
-                 "bio" : "Software developer 2",
-                 "profile picture": "new_url_image",
-                 "github": "https://github.com/Bhoomi02-byte"
-
-
-              }
-
-              Response->
-
-               {
-                "message" : "Profile updated successfully"
-               }
-
+         
 
             
 
