@@ -1,0 +1,41 @@
+Create the base architecture of the application
+
+
+/Blog Application
+|
+|--User
+|   |--UserController
+|   |--UserService
+|   |--IUserService
+|   |--UserModel
+|   
+|
+|--Category
+|   |--CategoryController
+|   |--CategoryService
+|   |--ICategoryService
+|   |--CategoryModel
+|
+|--Post
+|   |--PostController
+|   |--PostService
+|   |--IPostService
+|   |--PostModel
+|
+|--Comment
+|   |--CommentController
+|   |--CommentService
+|   |--ICommentService
+|   |--CommentModel
+|
+|--Like
+|   |--LikeController
+|   |--LikeService
+|   |--ILikeService
+|   |--LikeModel
+|
+|--Subscription
+|   |--SubscriptionController
+|   |--SubscriptionService
+|   |--ISubscriptionService
+|   |--SubscriptionModel

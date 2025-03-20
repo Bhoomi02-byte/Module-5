@@ -1,0 +1,232 @@
+Create database schema and it's models of the backend blog application:-
+
+
+
+Database Schema
+ 
+ -> A database schema defines the structure of a database:-
+
+           a)Tables(Entities)
+           b)Columns
+           c)Attributes
+           d)Constraints
+           e)Relationship between Tables
+
+        -> database schema is a visual representation of the database's logical structure.
+        -> database  schema consist of six tables: User, Category, Post, Comment, Like, Subscription.
+        -> Each table has a unique primary key that identifies each record in the table.
+        -> Each table has foreign keys that establish relationships between tables.
+          
+   ->Tables in the Blog Apllication
+
+           1) User Table
+
+                 ->Columns: UserId(PK), Name, Email, HashPassword, Role
+                 ->Purpose: Manages user authentication and roles.
+
+           2) Category Table
+
+                 ->Columns: CategoryId(PK), CategoryName, Description, UserId(FK)
+                 ->Purpose:  Each post belongs to one user and one category.
+
+           3) Post Table
+
+                 ->Columns: PostId(PK), Title, ImageUrl, Content, IsPublished, UserId(FK), CategoryId(FK)
+                 ->Purpose: Manages blog posts.
+
+           4) Comment Table
+
+                 ->Columns: CommentId(PK), Title, UserId(FK), PostId(FK)
+                 ->Purpose: Manages comments on blog posts.
+
+           5) Like Table
+
+                 ->Columns: LikeId(PK), UserId(FK), PostId(FK)
+                 ->Purpose: User likes on blog posts.
+
+           6) Subscription Table
+
+                 ->Columns: SubscriberId(PK), ViewerId(FK), AuthorId(FK)
+                 ->Purpose: users to follow other users.
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    ->Relationships between Tables
+
+             1) User and Category
+                  ->One-to-Many relationship: One user can have many categories.
+
+             2) User and Post
+                  ->One-to-Many relationship: One user can have many posts.
+
+             3) User and Comment
+                  ->Many-to-Many relationship: many user can have many comments.
+
+             4) User and Like
+                  ->Many-to-Many relationship: many user can have many likes.
+
+             5) User and Subscription
+                  ->Many-to-Many relationship: Many user can have many subscriptions.
+
+             6) Category and Post
+                  ->One-to-Many relationship: One category can have many posts.
+
+             7) Post and Comment
+                  ->One-to-Many relationship: One post can have many comments.
+
+             8) Post and Like
+                  ->One-to-Many relationship: One post can have many likes.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      ER DIAGRAM
+
+       ->Data schema diagram that represents the logical structure of a database.
+       ->ER diagram for the blog application shows the relationships between tables.
+
+         1)Data Schema or ER diagram for Blog Application - https://quokkalabsllp-my.sharepoint.com/:i:/g/personal/bhoomi_agarwal_quokkalabs_com/EcAExL4mPthBpM_wo_woIXYBmDqMkx3HB4pcEdcog9pADw?e=Sa41CX
+         2)SQL Schema diagram for Blog Apllication - https://quokkalabsllp-my.sharepoint.com/:i:/g/personal/bhoomi_agarwal_quokkalabs_com/EVGMc7PBFxNHsoNKMBS_XAsBFWO8qBNYXk70C5JD4ZK1hw?e=I9hPjn
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+     Models of BLOG APPLICATION:-
+
+     ->Models are used to represent the data structure of the application.
+     ->Models are used to interact with the database and perform CRUD operations.
+     ->Models are used to define the structure of the data that is stored in the database.
+
+      Six types of models are used in the blog application: User, Category, Post, Comment, Like, Subscription.
+
+     1) User Model
+         ->Two users- Admin and Viewer
+
+         ->Admin first register and then login.
+         ->The author or viewer can be distinguised by 'Role'.
+         -> It stores their name, email, password, and role (author, viewer).
+         
+          The User schema:-
+
+               CREATE TABLE User (
+                    UserId        PRIMARY KEY NOT NULL,
+                    Name          VARCHAR(255) NOT NULL,
+                    Email         VARCHAR(255) NOT NULL,
+                    HashPassword  VARCHAR(255) NOT NULL,
+                    Role          VARCHAR(255) NOT NULL CHECK (Role IN ('Admin', 'Viewer'))
+              );
+                 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      2) Category model
+
+        ->Categories help group posts under topics like "Technology," "Health,", "Food","Fashion".
+        ->Every post belongs to one category.
+        ->It stores the category name, description, and the user who created the category.
+        
+        ->The Category schema:-
+
+              CREATE TABLE Category (
+                    CategoryId    PRIMARY KEY,
+                    CategoryName  VARCHAR(255) NOT NULL,
+                    Description   TEXT NULL,
+                    UserId        INT NOT NULL,
+                    FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE //The ON DELETE CASCADE option ensures that when a record in the parent table is deleted, 
+                                                                                     all corresponding records in the child table are also deleted automatically.
+                 );
+
+                 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+       
+       3) Post model
+          
+          ->It Stores the title, content, image, and status (published or unpublished).
+          ->It stores the user who created the post and the category to which the post belongs.
+          ->It stores the post's title, content, image URL, status, user ID, and category ID.
+          ->A user can create many posts, and a post belongs to one user and one category.
+          
+
+              ->The Post schema:-
+                  CREATE TABLE Post (
+
+                        PostId        PRIMARY KEY,
+                        Title         VARCHAR(255) NOT NULL,
+                        ImageUrl      VARCHAR(255) NULL,
+                        Content       TEXT NOT NULL,
+                        IsPublished   BOOLEAN DEFAULT FALSE NOT NULL,
+                        UserId        INT NOT NULL FOREIGN KEY,
+                        CategoryId    INT NOT NULL FOREIGN KEY,
+                        FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
+                        FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId) ON DELETE CASCADE
+                    );
+
+                    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         4) Comment model
+
+          ->It stores the comment title, user ID, and post ID.
+          ->It stores the user who created the comment and the post on which the comment was made.
+
+              ->The Comment schema:-
+                  CREATE TABLE Comment (
+                        CommentId     PRIMARY KEY,
+                        Title         TEXT NOT NULL,
+                        UserId        INT NOT NULL FOREIGN KEY,
+                        PostId        INT NOT NULL,
+                        FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
+                        FOREIGN KEY (PostId) REFERENCES Post(PostId) ON DELETE CASCADE
+                    );
+
+                ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         5)Like model
+
+          ->It stores the comment title, user ID, and post ID.
+          ->It stores the user who like the post and the post on which the like was occur.
+          ->A user can like many posts, and a post can have many likes.
+
+              ->The Like schema:-
+                  CREATE TABLE Like (
+                        LikeId        PRIMARY KEY,
+                        UserId        INT NOT NULL FOREIGN KEY,
+                        PostId        INT NOT NULL FOREIGN KEY,
+                        FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
+                        FOREIGN KEY (PostId) REFERENCES Post(PostId) ON DELETE CASCADE
+                    );
+
+                  -----------------------------------------------------------------------------------------------------------------------------------------------
+
+          6) Subscription model
+            
+            ->It stores the subscriber ID, viewer ID, and author ID.
+            ->Manages following and followers between users.
+
+
+              ->The Subscription Schema:-
+
+                  CREATE TABLE Subscription (
+                        SubscriberId PRIMARY KEY,
+                        ViewerId   INT NOT NULL,
+                        AuthorId   INT NOT NULL,
+                        FOREIGN KEY (ViewerId) REFERENCES User(UserId) ON DELETE CASCADE,
+                        FOREIGN KEY (AuthorId) REFERENCES User(UserId) ON DELETE CASCADE
+    
+                     );
+
+
+      
+
+
+
+
+  
+    
+
+    
+
+
+
+
+
+
+
+
+  
