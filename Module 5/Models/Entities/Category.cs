@@ -14,4 +14,4 @@ namespace Module_5.Models.Entities
         public ICollection<Post> Posts { get; set; }
     }
 }
-}
+
