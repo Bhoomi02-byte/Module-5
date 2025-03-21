@@ -16,9 +16,9 @@ public class GlobalExceptionHandler : IExceptionHandler
 
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
-        var stopwatch = Stopwatch.StartNew(); // Start execution timer
+        var stopwatch = Stopwatch.StartNew(); 
 
-        // Extract required parameters
+        
         string timestamp = DateTime.UtcNow.ToString("HH:mm:ss tt (UTC)");
         string ipAddress = httpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
         string requestUrl = $"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}";
