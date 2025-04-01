@@ -69,7 +69,7 @@ Blog Application:-
                Response
                {
                  "token": "jwt-auth-token"
-                 "userId":1
+                 "name":Bhoomi
                  "role": "author"
             
                }
@@ -176,7 +176,7 @@ Blog Application:-
                          "categoryId":1,
                          "categoryName": "Technology",
                          "description": "Technology related posts" 
-                       }
+                    }
                    ]
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 

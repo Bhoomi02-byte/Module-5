@@ -19,11 +19,11 @@ namespace Module_5.Controllers
             return Ok(response);
         }
 
-        [HttpGet("bad-request")]
-        public IActionResult BadRequestError()
-        {
-            throw new GlobalException("Invalid input format.");
-        }
+        //[HttpGet("bad-request")]
+        //public IActionResult BadRequestError()
+        //{
+        //    throw new GlobalException("Invalid input format.");
+        //}
 
         [HttpGet("internal-error")]
         public IActionResult InternalServerError()

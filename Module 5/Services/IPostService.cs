@@ -1,6 +1,16 @@
-﻿namespace Module_5.Services
+﻿using Module_5.DTO;
+using Module_5.Utilities;
+
+namespace Module_5.Services
 {
     public interface IPostService
     {
+        Task<ApiResponse> CreateAsync(int userId, int categoryId, PostDto postDto);
+        Task<List<object>> GetAllAsync(int userId, string userRole);
+        Task<List<object>> GetAsync(int postId ,int userId, string userRole);
+        Task<bool> DeleteAsync(int postId, int userId);
+        Task<PostDto> UpdateAsync(int postId, int userId, PostDto postDto);
+        Task<bool> PublishAsync(int postId, int userId);
+        Task<bool> UnPublishAsync(int postId, int userId);
     }
 }
