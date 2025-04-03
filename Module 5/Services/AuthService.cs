@@ -22,9 +22,9 @@ namespace Module_5.Services
 
         public async Task<bool> RegisterAsync(RegisterDto registerDto)
         {
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == registerDto.Email);
+            bool existingUser = await _context.Users.AnyAsync(u => u.Email == registerDto.Email);
 
-            if (existingUser != null)
+            if (existingUser)
                 return false;
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
@@ -51,18 +51,14 @@ namespace Module_5.Services
 
 
             return true;
+}
 
-
-        }
         public async Task<object> LoginAsync(LoginDto loginDto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
 
-            if (user == null)
-                return false;
-
-            if (!VerifyPassword(loginDto.Password, user.HashPassword))
-                return false;
+            if (user == null || !VerifyPassword(loginDto.Password, user.HashPassword))
+                return null;
 
             string token = _jwtTokenHelper.GenerateJwtToken(user.Id, user.Name, user.Email, user.UserRole);
 

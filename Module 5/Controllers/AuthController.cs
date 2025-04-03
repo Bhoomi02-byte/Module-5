@@ -22,12 +22,12 @@ namespace Module_5.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
             var response = await _authservice.RegisterAsync(registerDto);
-            if (response == false)
+            if (!response)
             {
-                return Conflict(new ApiResponse(false,400, "User with this email already exists",null));
+                return Conflict(new ApiResponse(false,400,JsonHelper.GetMessage(101),null));
             }
             
-            return Ok(new ApiResponse(true,201, "User Registered Successfully", new
+            return Ok(new ApiResponse(true,201, JsonHelper.GetMessage(122), new
             {
                 registerDto.Name,
                 registerDto.Email,
@@ -42,10 +42,10 @@ namespace Module_5.Controllers
         {
            var response = await _authservice.LoginAsync(loginDto);
 
-            if (response == null)
-                return NotFound(new ApiResponse(false, 400, "User does not exist",null));
+            if (response==null)
+                return NotFound(new ApiResponse(false, 400,JsonHelper.GetMessage(102), null));
 
-            return Ok(new ApiResponse(true, 201,"Logged in Successfully",response));   
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), response));   
         }
     }
 }

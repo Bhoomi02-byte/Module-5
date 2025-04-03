@@ -82,8 +82,9 @@ namespace Module_5
             builder.Services.AddProblemDetails(); 
 
             var app = builder.Build();
+            JsonHelper.GetMessage(101);
 
-            
+
             app.UseExceptionHandler(); 
 
             

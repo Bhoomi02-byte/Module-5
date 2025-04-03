@@ -15,8 +15,8 @@ namespace Module_5.Services
         }
         public async Task<bool> CreateAsync(CategoryDto categoryDto, int userId)
         {
-            var existingCategory= await _context.Categories.FirstOrDefaultAsync(c => c.CategoryName == categoryDto.CategoryName);
-            if (existingCategory!=null)
+            bool existingCategory = await _context.Categories.AnyAsync(c => c.CategoryName == categoryDto.CategoryName);
+            if (existingCategory)
             {
                 return false;
             }
@@ -34,14 +34,11 @@ namespace Module_5.Services
         public async Task<bool> DeleteAsync(int categoryId, int userId)
         {
             var category = await _context.Categories.FindAsync(categoryId);
-            if (category == null)
+            if (category == null || category.AuthorId != userId)
             {
                 return false;
             }
-            if (category.AuthorId != userId)
-            {
-                return false;
-            }
+           
             _context.Categories.Remove(category);
             var result = await _context.SaveChangesAsync();
             return result > 0;
@@ -75,7 +72,7 @@ namespace Module_5.Services
             return new CategoryDto
             {
                 CategoryName = category.CategoryName,
-                Description=category.Description
+                Description = category.Description
             };
         }
 

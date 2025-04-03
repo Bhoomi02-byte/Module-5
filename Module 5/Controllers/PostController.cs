@@ -28,7 +28,7 @@ namespace Module_5.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (userIdClaim == null)
-                return BadRequest(new ApiResponse(false, 401, "Unauthorized request.", null));
+                return BadRequest(new ApiResponse(false, 401, JsonHelper.GetMessage(105), null));
 
             int userId = int.Parse(userIdClaim);
 
@@ -49,9 +49,9 @@ namespace Module_5.Controllers
             var posts = await _postService.GetAllAsync(userId, userRole);
 
             if (posts == null || !posts.Any())
-                return NotFound(new ApiResponse(false, 404, "No posts found.", null));
+                return NotFound(new ApiResponse(false, 404, JsonHelper.GetMessage(118), null));
 
-            return Ok(new ApiResponse(true, 200, "Posts retrieved successfully.", posts));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(126), posts));
         }
 
         [HttpGet("{postId}")]
@@ -66,7 +66,7 @@ namespace Module_5.Controllers
             if (post == null || !post.Any())
                 return NotFound(new ApiResponse(false, 404, "No posts found.", null));
 
-            return Ok(new ApiResponse(true, 200, "Posts retrieved successfully.", post));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(126), post));
 
         }
 
@@ -77,7 +77,7 @@ namespace Module_5.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             
              if (userIdClaim == null )
-                return Unauthorized(new ApiResponse(false, 401, "Unauthorized access.", null));
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
             int userId = int.Parse(userIdClaim.Value);
            
@@ -85,9 +85,9 @@ namespace Module_5.Controllers
             bool isDeleted = await _postService.DeleteAsync(postId, userId);
 
             if (!isDeleted)
-                return NotFound(new ApiResponse(false, 403, "Only the author with 'Author' role can delete this post.", null));
+                return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(120), null));
 
-            return Ok(new ApiResponse(true, 200, "Post deleted successfully.",null));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(114), null));
         }
 
         [Authorize(Roles = "Author")]
@@ -97,7 +97,7 @@ namespace Module_5.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
            
                 if (userIdClaim == null )
-                return Unauthorized(new ApiResponse(false, 401, "Unauthorized access.", null));
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
             int userId = int.Parse(userIdClaim.Value);
             
@@ -105,9 +105,9 @@ namespace Module_5.Controllers
             var isUpdated = await _postService.UpdateAsync(postId, userId, postDto);
 
             if (isUpdated==null)
-                return NotFound(new ApiResponse(false, 403, "Only the author with 'Author' role can update this post.", null));
+                return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(119), null));
 
-            return Ok(new ApiResponse(true, 200, "Post updated successfully.", isUpdated));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(115), isUpdated));
         }
 
         [Authorize(Roles = "Author")]
@@ -117,16 +117,16 @@ namespace Module_5.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             
             if (userIdClaim == null )
-                return Unauthorized(new ApiResponse(false, 401, "Unauthorized access.", null));
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
             int userId = int.Parse(userIdClaim.Value);
             
             var isPublished = await _postService.PublishAsync(postId, userId);
 
             if (isPublished == null)
-                return NotFound(new ApiResponse(false, 403, "Only the author with 'Author' role can modify the publish status.", null));
+                return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(121), null));
 
-            return Ok(new ApiResponse(true, 200, "Post published successfully.",null ));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(116), null ));
         }
 
         [Authorize(Roles = "Author")]
@@ -136,16 +136,16 @@ namespace Module_5.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
 
             if (userIdClaim == null)
-                return Unauthorized(new ApiResponse(false, 401, "Unauthorized access.", null));
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
             int userId = int.Parse(userIdClaim.Value);
 
             var isPublished = await _postService.UnPublishAsync(postId, userId);
 
             if (isPublished == null)
-                return NotFound(new ApiResponse(false, 403, "Only the author with 'Author' role can modify the publish status.", null));
+                return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(121), null));
 
-            return Ok(new ApiResponse(true, 200, "Post Unpublished successfully.", null));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(117), null));
         }
 
 

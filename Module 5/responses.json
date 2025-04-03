@@ -1,0 +1,30 @@
+{
+    "101": "User with this email already exists.",
+    "102": "User does not exist.",
+    "103": "Invalid User ID in token. Extracted Value: {0}",
+    "104": "Unauthorized access.",
+    "105": "Unauthorized request.",
+    "106": "A Category with this name exists.",
+    "107": "No categories found.",
+    "108": "Category created successfully.",
+    "109": "Category deleted successfully.",
+    "110": "Only the author with 'Author' role can update this category.",
+    "111": "Failed to delete category.",
+    "112": "A post with this title already exists.",
+    "113": "Post created successfully.",
+    "114": "Post deleted successfully.",
+    "115": "Post updated successfully.",
+    "116": "Post published successfully.",
+    "117": "Post unpublished successfully.",
+    "118": "No posts found.",
+    "119": "Only the author with 'Author' role can update this post.",
+    "120": "Only the author with 'Author' role can delete this post.",
+    "121": "Only the author with 'Author' role can modify the publish status.",
+    "122": "User Registered Successfully.",
+    "123": "Logged in Successfully.",
+    "124": "Categories Retreived successfully",
+    "125": "Categories Updated successfully",
+    "126": "Post Retreived successfully"
+}
+}
+

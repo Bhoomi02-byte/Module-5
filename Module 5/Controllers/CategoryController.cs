@@ -56,15 +56,15 @@ namespace Module_5.Controllers
 
             if (!int.TryParse(userIdClaim, out int userId))
             {
-                return BadRequest(new ApiResponse(false, 400, $"Invalid User ID in token. Extracted Value: {userIdClaim}",null));
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
             bool isDeleted = await _categoryService.DeleteAsync(categoryId, userId);
             if (!isDeleted)
             {
-                return Conflict(new ApiResponse(false, 400, "Failed to delete category.",null));
+                return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(111), null));
             }
-            return Ok(new ApiResponse(true, 201, "Category deleted successfully",null));
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(109),null));
 
 
         }
@@ -76,10 +76,10 @@ namespace Module_5.Controllers
 
             if (categories == null || !categories.Any())
             {
-                return NotFound(new ApiResponse(false, 404, "No categories found.", null));
+                return NotFound(new ApiResponse(false, 404, JsonHelper.GetMessage(107), null));
             }
 
-       return Ok(new ApiResponse(true, 200, "Categories retrieved successfully.", categories));
+       return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(124), categories));
 
 
         }
@@ -88,17 +88,18 @@ namespace Module_5.Controllers
         [HttpPut("{categoryId}")]
         public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, int categoryId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+           var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
            if (!int.TryParse(userIdClaim, out int userId))
             {
-                return BadRequest(new ApiResponse(false, 400, $"Invalid User ID in token. Extracted Value: {userIdClaim}",null));
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
+
             var isUpdated= await _categoryService.UpdateAsync(categoryDto,userId,categoryId);
 
             if (isUpdated == null)
-                return NotFound(new ApiResponse(false, 403, "Only the author with 'Author' role can update this category.", null));
+                return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(110), null));
 
-            return Ok(new ApiResponse(true, 201, "Category updated successfully.", isUpdated));
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), isUpdated));
 
 
 

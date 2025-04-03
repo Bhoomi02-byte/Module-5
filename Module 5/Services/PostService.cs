@@ -20,16 +20,16 @@ namespace Module_5.Services
             
             var category = await _context.Categories.FindAsync(categoryId);
             if (category == null)
-                return new ApiResponse(false, 404, "Category not found.", null);
+                return new ApiResponse(false, 404, JsonHelper.GetMessage(107), null);
 
             
             bool titleExists = await _context.Posts.AnyAsync(p => p.Title == postDto.Title);
             if (titleExists)
-                return new ApiResponse(false, 400, "A post with this title already exists.", null);
+                return new ApiResponse(false, 400, JsonHelper.GetMessage(112), null);
 
             var user = await _context.Users.FindAsync(userId);
             if (user == null)
-                return new ApiResponse(false, 404, "User not found.", null);
+                return new ApiResponse(false, 404, JsonHelper.GetMessage(102), null);
 
             
             var newPost = new Post
