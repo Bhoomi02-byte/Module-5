@@ -1,7 +1,7 @@
 {
     "101": "User with this email already exists.",
     "102": "User does not exist.",
-    "103": "Invalid User ID in token. Extracted Value: {0}",
+    "103": "Invalid User ID in token. ",
     "104": "Unauthorized access.",
     "105": "Unauthorized request.",
     "106": "A Category with this name exists.",
@@ -26,5 +26,5 @@
     "125": "Categories Updated successfully",
     "126": "Post Retreived successfully"
 }
-}
+
 

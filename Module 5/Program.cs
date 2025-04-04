@@ -62,6 +62,9 @@ namespace Module_5
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IPostService, PostService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ISubscribeService, SubscribeService>();
+
 
 
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
@@ -85,9 +88,10 @@ namespace Module_5
             JsonHelper.GetMessage(101);
 
 
-            app.UseExceptionHandler(); 
+            app.UseExceptionHandler();
+            app.UseStaticFiles(); 
 
-            
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

@@ -11,8 +11,8 @@ using Module_5.Data;
 namespace Module_5.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20250324110059_IntialMigration")]
-    partial class IntialMigration
+    [Migration("20250403122744_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace Module_5.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("CategoryName")
@@ -48,6 +48,48 @@ namespace Module_5.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Like", b =>
+                {
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PostId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("Module_5.Models.Entities.Post", b =>
@@ -69,7 +111,6 @@ namespace Module_5.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsPublished")
@@ -86,6 +127,21 @@ namespace Module_5.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Subscription", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "AuthorId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Subscriptions");
                 });
 
             modelBuilder.Entity("Module_5.Models.Entities.User", b =>
@@ -108,7 +164,7 @@ namespace Module_5.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
+                    b.Property<int>("UserRole")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -120,11 +176,47 @@ namespace Module_5.Migrations
                 {
                     b.HasOne("Module_5.Models.Entities.User", "Author")
                         .WithMany("Category")
-                        .HasForeignKey("AuthorId")
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Comment", b =>
+                {
+                    b.HasOne("Module_5.Models.Entities.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Author");
+                    b.HasOne("Module_5.Models.Entities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Like", b =>
+                {
+                    b.HasOne("Module_5.Models.Entities.Post", "Post")
+                        .WithMany("Likes")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Module_5.Models.Entities.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Module_5.Models.Entities.Post", b =>
@@ -145,16 +237,50 @@ namespace Module_5.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Module_5.Models.Entities.Subscription", b =>
+                {
+                    b.HasOne("Module_5.Models.Entities.User", "Author")
+                        .WithMany("Subscribers")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Module_5.Models.Entities.User", "User")
+                        .WithMany("Subscriptions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Module_5.Models.Entities.Category", b =>
                 {
                     b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("Module_5.Models.Entities.Post", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
                 });
 
             modelBuilder.Entity("Module_5.Models.Entities.User", b =>
                 {
                     b.Navigation("Category");
 
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+
                     b.Navigation("Posts");
+
+                    b.Navigation("Subscribers");
+
+                    b.Navigation("Subscriptions");
                 });
 #pragma warning restore 612, 618
         }

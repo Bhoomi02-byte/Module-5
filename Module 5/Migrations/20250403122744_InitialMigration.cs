@@ -5,7 +5,7 @@
 namespace Module_5.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrationM1 : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -136,7 +136,7 @@ namespace Module_5.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Likes", x => new { x.UserId, x.PostId });
+                    table.PrimaryKey("PK_Likes", x => new { x.PostId, x.UserId });
                     table.ForeignKey(
                         name: "FK_Likes_Posts_PostId",
                         column: x => x.PostId,
@@ -167,9 +167,9 @@ namespace Module_5.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Likes_PostId",
+                name: "IX_Likes_UserId",
                 table: "Likes",
-                column: "PostId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_AuthorId",
