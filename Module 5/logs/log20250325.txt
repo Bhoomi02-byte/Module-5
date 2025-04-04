@@ -1,0 +1,9 @@
+2025-03-25 17:18:54.774 +05:30 [ERR] Time: 11:48:54 AM (UTC) 
+IP: [::1] 
+https://localhost:7299/api/auth/register (Delete) 
+USER: [Anonymous User (Not Logged In)] 
+REQUEST_HEADERS: {"Accept":["*/*"],"Host":["localhost:7299"],"User-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"],"Accept-Encoding":["gzip, deflate, br, zstd"],"Accept-Language":["en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7"],"Content-Type":["application/json"],"Cookie":["username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804"],"Origin":["https://localhost:7299"],"Referer":["https://localhost:7299/swagger/index.html"],"Content-Length":["125"],"sec-ch-ua-platform":["\u0022Windows\u0022"],"sec-ch-ua":["\u0022Chromium\u0022;v=\u0022134\u0022, \u0022Not:A-Brand\u0022;v=\u002224\u0022, \u0022Google Chrome\u0022;v=\u0022134\u0022"],"sec-ch-ua-mobile":["?0"],"sec-fetch-site":["same-origin"],"sec-fetch-mode":["cors"],"sec-fetch-dest":["empty"],"priority":["u=1, i"]} 
+REQUEST BODY:  
+RESPONSE_HEADERS: {"Content-Type":["application/json"],"Date":["Tue, 25 Mar 2025 11:48:54 GMT"],"Server":["Kestrel"],"Cache-Control":["no-cache,no-store"],"Expires":["-1"],"Pragma":["no-cache"]}
+STATUS_CODE ~ 500 
+EXECUTION_TIME [0.0405474 Seconds]

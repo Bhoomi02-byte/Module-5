@@ -1,6 +1,11 @@
-﻿namespace Module_5.Services
+﻿using Module_5.DTO;
+using Module_5.Utilities;
+
+namespace Module_5.Services
 {
-    public class IAuthService
+    public interface IAuthService
     {
+        Task<bool> RegisterAsync(RegisterDto registerDto);
+        Task<object> LoginAsync(LoginDto loginDto);
     }
 }
