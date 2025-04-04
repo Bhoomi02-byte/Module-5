@@ -24,7 +24,7 @@ namespace Module_5.Data
                 .HasOne(p => p.Category)
                 .WithMany(c => c.Posts)
                 .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.SetNull); 
+                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }

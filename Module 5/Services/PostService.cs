@@ -71,7 +71,7 @@ namespace Module_5.Services
                     p.Content,
                     p.ImageUrl,
                     AuthorName =  p.Author.Name ,
-                    CategoryName = p.Category != null ? p.Category.CategoryName : "Uncategorized",
+                    CategoryName =  p.Category.CategoryName ,
                     p.IsPublished
                 })
                 .ToListAsync<object>();
@@ -91,7 +91,7 @@ namespace Module_5.Services
                     p.Content,
                     p.ImageUrl,
                     AuthorName = p.Author.Name,
-                    CategoryName = p.Category != null ? p.Category.CategoryName : "Uncategorized",
+                    CategoryName = p.Category.CategoryName ,
                     p.IsPublished
                 })
                 .ToListAsync<object>();

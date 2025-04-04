@@ -32,15 +32,15 @@ namespace Module_5.Controllers
 
             if (!int.TryParse(userIdClaim, out int userId))
             {
-                return BadRequest(new ApiResponse(false, 400, $"Invalid User ID in token. Extracted Value: {userIdClaim}",null));
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
             bool isCreated = await _categoryService.CreateAsync(categoryDto, userId);
             if (!isCreated)
             {
-                return Conflict(new ApiResponse(false, 400, "A Category with this name exists", null));
+                return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(106), null));
             }
-            return Ok(new ApiResponse(true, 201, "Category created successfully", new
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(108), new
             {
                 categoryDto.CategoryName,
                 categoryDto.Description

@@ -23,7 +23,7 @@ public class GlobalExceptionHandler : IExceptionHandler
         string ipAddress = httpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
         string requestUrl = $"{httpContext.Request.Scheme}://{httpContext.Request.Host}{httpContext.Request.Path}";
         string method = httpContext.Request.Method;
-        string user = httpContext.User.Identity?.IsAuthenticated == true ? httpContext.User.Identity.Name : "Anonymous User (Not Logged In)";
+        string user = httpContext.User.Identity?.IsAuthenticated == true ? httpContext.User.Identity.Name : JsonHelper.GetMessage(128);
         string requestHeaders = JsonSerializer.Serialize(httpContext.Request.Headers);
         string requestBody = httpContext.Request.ContentLength > 0 ? await new System.IO.StreamReader(httpContext.Request.Body).ReadToEndAsync() : "None";
 
@@ -32,7 +32,7 @@ public class GlobalExceptionHandler : IExceptionHandler
         {
             success = false, 
             statusCode = statusCode,
-            message = exception is GlobalException ? exception.Message : "An unexpected error occurred."
+            message = exception is GlobalException ? exception.Message : JsonHelper.GetMessage(127)
         };
 
         httpContext.Response.StatusCode = statusCode;
