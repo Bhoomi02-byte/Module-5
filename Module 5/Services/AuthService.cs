@@ -46,7 +46,7 @@ namespace Module_5.Services
 
             if (!emailSent)
             {
-                Console.WriteLine("Email failed to send!");
+                Console.WriteLine(JsonHelper.GetMessage(129));
             }
 
 

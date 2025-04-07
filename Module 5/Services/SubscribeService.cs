@@ -18,19 +18,18 @@ namespace Module_5.Services
         .AnyAsync(s => s.UserId == userId && s.AuthorId == authorId);
 
             if (exists)
-                return "You are already subscribed to this author.";
+                return JsonHelper.GetMessage(149);
 
             var subscription = new Subscription
             {
                 UserId = userId,
-                AuthorId = authorId,
-               
+                AuthorId = authorId,   
             };
 
             _context.Subscriptions.Add(subscription);
             await _context.SaveChangesAsync();
 
-            return "Subscribed successfully.";
+            return JsonHelper.GetMessage(145);
         }
 
         public async Task<string> UnsubscribeAsync(int userId, int authorId)
@@ -38,13 +37,13 @@ namespace Module_5.Services
             var subscription = await _context.Subscriptions
                 .FirstOrDefaultAsync(s => s.UserId == userId && s.AuthorId == authorId);
 
-            if (subscription == null)
-                return "You are not subscribed to this author.";
+           if (subscription!=null)
+                return JsonHelper.GetMessage(146);
 
             _context.Subscriptions.Remove(subscription);
             await _context.SaveChangesAsync();
 
-            return "Unsubscribed successfully.";
+            return JsonHelper.GetMessage(147);
         }
     }
  }

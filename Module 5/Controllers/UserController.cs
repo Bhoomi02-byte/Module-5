@@ -17,19 +17,18 @@ namespace Module_5.Controllers
         {
             _userservice = userService;
         }
+
         [HttpPost("like/{postId}")]
         public async Task<IActionResult> Liked(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
-
+           
             var isliked= await _userservice.LikePost(postId,userId);
-            if(isliked=="Post liked successfully")
-            {
-                return Ok(new ApiResponse(true, 200, isliked, null));
-            }
+            if(isliked == JsonHelper.GetMessage(142))
+             return Ok(new ApiResponse(true, 200, isliked, null));
+            
             return BadRequest(new ApiResponse(false,400,isliked, null)); 
         }
 
@@ -37,30 +36,28 @@ namespace Module_5.Controllers
 
         public async Task<IActionResult> UnLiked(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
 
             var isUnliked = await _userservice.UnLikePost(postId, userId);
 
-            if (isUnliked == "Post UnLiked successfully")
-            {
-                return Ok(new ApiResponse(true, 200, isUnliked, null));
-            }
+            if (isUnliked == JsonHelper.GetMessage(140))
+            return Ok(new ApiResponse(true, 200, isUnliked, null));
+            
             return BadRequest(new ApiResponse(false, 400, isUnliked, null));
         }
 
-        [HttpPost("{postId}/comment")]
+
+        [HttpPost("comment/{postId}")]
         public async Task<IActionResult> Create(int postId, [FromBody] CommentDto commentDto)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
 
-            var response= await _userservice.CreateAsync(commentDto,postId, userId);
-            if(response == "Comment Added successfully")
+            var response = await _userservice.CreateAsync(commentDto,postId, userId);
+            if(response == JsonHelper.GetMessage(131))
             {
                 return Ok(new ApiResponse(true, 200, response, null));
             }
@@ -68,35 +65,29 @@ namespace Module_5.Controllers
 
         }
 
-        [HttpGet("{postId}/comment")]
+        [HttpGet("comment/{postId}")]
         public async Task<IActionResult> Get(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
-
+        
             var response = await _userservice.GetAsync(postId);
 
             if (response == null)
-            {
-                return NotFound(new ApiResponse(false, 400, "No comments", response));
-            }
-            return Ok(new ApiResponse(true, 200, "Comments retrieved successfully", response));
+              return NotFound(new ApiResponse(false, 400, JsonHelper.GetMessage(132), response));
+            
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(133), response));
 
         }
 
         [HttpDelete("{postId}/comment/{commentId}")]
         public async Task<IActionResult> Delete(int postId, int commentId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
 
             string result = await _userservice.DeleteAsync(postId, userId, commentId);
 
-            if (result == "Comment deleted successfully.")
+            if (result == JsonHelper.GetMessage(134))
                 return Ok(new ApiResponse(true, 200, result, null));
 
             return BadRequest(new ApiResponse(false, 400, result, null));

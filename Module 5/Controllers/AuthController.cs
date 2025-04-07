@@ -32,7 +32,7 @@ namespace Module_5.Controllers
                 registerDto.Name,
                 registerDto.Email,
                 Role = registerDto.UserRole.ToString()
-            ,
+            
             }));
             
         }
@@ -45,7 +45,7 @@ namespace Module_5.Controllers
             if (response==null)
                 return NotFound(new ApiResponse(false, 400,JsonHelper.GetMessage(102), null));
 
-            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), response));   
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(123), response));   
         }
     }
 }

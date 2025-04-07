@@ -14,53 +14,55 @@ namespace Module_5.Services
             _context = context;
         }
 
-        public async Task<string> LikePost(int userId, int postId)
+        public async Task<string> LikePost(int postId, int userId)
         {
-            var post = await _context.Posts.FindAsync(postId);
-            var user = await _context.Users.FindAsync(userId);
-            if (post == null || user == null)
-            {
-                return "Post not found.";
-            }
+            var post = await _context.Posts
+       .FirstOrDefaultAsync(p => p.Id == postId);
 
-            bool alreadyLiked = await _context.Likes.AnyAsync(l => l.UserId == userId && l.PostId == postId);
 
-            if (alreadyLiked)
-                return "You have already liked this post.";
+            if (post == null || post.IsPublished == false)
+                return JsonHelper.GetMessage(138);
 
-            var like = new Like
+
+            var alreadyLiked = await _context.Likes.FirstOrDefaultAsync(l => l.UserId == userId && l.PostId == postId);
+
+            if (alreadyLiked!=null)
+                return JsonHelper.GetMessage(143);
+
+            var newLike = new Like
             {
                 UserId = userId,
                 PostId = postId
             };
 
-            _context.Likes.Add(like);
+            _context.Likes.Add(newLike);
             await _context.SaveChangesAsync();
 
-            return "Post liked successfully";
+            return JsonHelper.GetMessage(142);
 
         }
 
-        public async Task<string> UnLikePost(int userId, int postId)
+        public async Task<string> UnLikePost(int postId, int userId)
         {
             var like = await _context.Likes
                 .FirstOrDefaultAsync(l => l.UserId == userId && l.PostId == postId);
 
             if (like == null)
-                return "You have not liked this post.";
+                return JsonHelper.GetMessage(141);
 
             _context.Likes.Remove(like);
             await _context.SaveChangesAsync();
 
-            return "Post Unliked successfully";
+            return JsonHelper.GetMessage(140);
         }
 
-        public async Task<string> CreateAsync(CommentDto commentDto,int userId, int postId)
+        public async Task<string> CreateAsync(CommentDto commentDto,int postId, int userId)
         {
-            var post = await _context.Posts.FindAsync(postId);
-            if (post == null)
+            var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+
+           if (post == null)
             {
-                return "Post does not exist";
+                return JsonHelper.GetMessage(138);
             }
             var newComment = new Comment
             {
@@ -71,13 +73,13 @@ namespace Module_5.Services
             };
             _context.Comments.Add(newComment);
             await _context.SaveChangesAsync();
-            return "Comment Added successfully";
+            return JsonHelper.GetMessage(137);
         }
 
         public async Task<List<object>> GetAsync(int postId)
         {
             return await _context.Comments
-                .Where(c => c.PostId == postId)
+                .Where(c => c.PostId == postId && c.Post.IsPublished)
                 .Include(c => c.User)
                 .Include(c => c.Post)
                 .Select(c => new 
@@ -95,15 +97,16 @@ namespace Module_5.Services
         .FirstOrDefaultAsync(c => c.Id == commentId && c.PostId == postId);
 
             if (comment == null)
-                return "Comment not found.";
+                return JsonHelper.GetMessage(136);
 
             if (comment.UserId != userId)
-                return "You are not authorized to delete this comment.";
+                return JsonHelper.GetMessage(135);
+               
 
             _context.Comments.Remove(comment);
             await _context.SaveChangesAsync();
 
-            return "Comment deleted successfully.";
+            return JsonHelper.GetMessage(134);
 
         }
 

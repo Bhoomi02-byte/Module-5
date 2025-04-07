@@ -27,13 +27,9 @@ namespace Module_5.Services
             if (titleExists)
                 return new ApiResponse(false, 400, JsonHelper.GetMessage(112), null);
 
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
-                return new ApiResponse(false, 404, JsonHelper.GetMessage(102), null);
-
-            
-            var newPost = new Post
-            {
+           var user = await _context.Users.FindAsync(userId);
+           var newPost = new Post
+          {
                 Title = postDto.Title,
                 Content = postDto.Content,
                 ImageUrl = postDto.ImageUrl,
@@ -54,28 +50,29 @@ namespace Module_5.Services
                 category.CategoryName,
 
             };
-            return new ApiResponse(true, 201, "Post created successfully.", response);
+            return new ApiResponse(true, 201, JsonHelper.GetMessage(113), response);
            
         }
-        public async Task<List<object>> GetAllAsync(int userId, string userRole)
+        public async Task<List<object>> GetAllAsync()
         {
             return await _context.Posts
                 .AsNoTracking()
                 .Include(p => p.Author)
                 .Include(p => p.Category)
-                .Where(p => userRole == "Author" && p.AuthorId == userId || p.IsPublished)
+                .Where(p => p.IsPublished)
                 .Select(p => new
                 {
-                    postId=p.Id,
+                    postId = p.Id,
                     p.Title,
                     p.Content,
                     p.ImageUrl,
-                    AuthorName =  p.Author.Name ,
-                    CategoryName = p.Category != null ? p.Category.CategoryName : "Uncategorized",
+                    AuthorName = p.Author.Name,
+                    CategoryName = p.Category.CategoryName,
                     p.IsPublished
                 })
                 .ToListAsync<object>();
         }
+
         public async Task<List<object>> GetAsync(int postId, int userId, string userRole)
         {
             return await _context.Posts
@@ -91,7 +88,7 @@ namespace Module_5.Services
                     p.Content,
                     p.ImageUrl,
                     AuthorName = p.Author.Name,
-                    CategoryName = p.Category != null ? p.Category.CategoryName : "Uncategorized",
+                    CategoryName = p.Category.CategoryName ,
                     p.IsPublished
                 })
                 .ToListAsync<object>();
@@ -111,10 +108,9 @@ namespace Module_5.Services
         }
         public async Task<PostDto?> UpdateAsync(int postId, int userId, PostDto postDto)
         {
-           
-            var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+           var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == postId);
 
-            if (post == null|| post.AuthorId != userId)
+            if (post == null || post.AuthorId != userId)
                 return null; 
 
             post.Title = postDto.Title;
@@ -147,7 +143,7 @@ namespace Module_5.Services
 
 
             return true;
-           }
+        }
         public async Task<bool> UnPublishAsync(int postId, int userId)
         {
             var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == postId);
@@ -162,14 +158,43 @@ namespace Module_5.Services
             return true;
            
             
-              
-           
         }
 
-        
+        public async Task<string> UploadImageAsync(int postId,int userId, IFormFile image, HttpRequest request)
+        {
+            var post = await _context.Posts.FirstOrDefaultAsync(p => p.Id == postId);
+            if (post == null) return JsonHelper.GetMessage(138);
 
+            if (post.AuthorId != userId) return JsonHelper.GetMessage(150);
+            
 
+            var extension = Path.GetExtension(image.FileName);
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
 
+            if (!allowedExtensions.Contains(extension.ToLower()))
+                return JsonHelper.GetMessage(151);
+
+            var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            if (!Directory.Exists(uploadsPath))
+                Directory.CreateDirectory(uploadsPath);
+
+            var fileName = $"{Guid.NewGuid()}{extension}";
+            var filePath = Path.Combine(uploadsPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await image.CopyToAsync(stream);
+            }
+
+            var imageUrl = $"{request.Scheme}://{request.Host}/uploads/{fileName}";
+
+           
+            post.ImageUrl = imageUrl;
+            _context.Posts.Update(post);
+            await _context.SaveChangesAsync();
+
+            return JsonHelper.GetMessage(152);
+        }
 
 
     }

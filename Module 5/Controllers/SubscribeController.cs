@@ -19,37 +19,33 @@ namespace Module_5.Controllers
         [HttpPost("subscribe/{authorId}")]
         public async Task<IActionResult> Subscribe(int authorId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-            int userId = int.Parse(userIdClaim.Value);
 
             if (userId == authorId)
-            {
-                return BadRequest(new ApiResponse(false, 400, "You cannot subscribe to yourself.", null));
-            }
+             return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(144), null));
+            
             var result = await _subscribeservice.SubscribeAsync(userId, authorId);
-            if (result == "Subscribed successfully.")
+            if (result == JsonHelper.GetMessage(145))
                 return Ok(new ApiResponse(true, 200, result, null));
 
             return BadRequest(new ApiResponse(false, 400, result, null));
 
 
         }
-        [HttpDelete("unsubsribe/{authorId}")]
+        [HttpDelete("unsubscribe/{authorId}")]
         public async Task<IActionResult> UnSubscribe(int authorId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
-            int userId = int.Parse(userIdClaim.Value);
             if (userId == authorId)
-            {
-                return BadRequest(new ApiResponse(false, 400, "You cannot unsubscribe to yourself.", null));
-            }
-            var result = await _subscribeservice.SubscribeAsync(userId, authorId);
-            if (result == "UnSubscribed successfully.")
+            return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(148), null));
+            
+            var result = await _subscribeservice.UnsubscribeAsync(userId, authorId);
+            if (result == JsonHelper.GetMessage(147))
                 return Ok(new ApiResponse(true, 200, result, null));
 
             return BadRequest(new ApiResponse(false, 400, result, null));

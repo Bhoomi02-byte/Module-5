@@ -7,6 +7,8 @@ using Microsoft.IdentityModel.Tokens;
 using Module_5.Services;
 using Module_5.Utilities;
 using Module_5.Exceptions;
+using Microsoft.Extensions.FileProviders;
+using Module_5.Middlware;
 
 
 
@@ -52,7 +54,7 @@ namespace Module_5
 
             Log.Logger = new LoggerConfiguration()
              .WriteTo.Console()
-             .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7) // Logs to file
+             .WriteTo.File("Logs/api-log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7) // Logs to file
              .CreateLogger();
             
             builder.Services.AddDbContext<BlogDbContext>(options =>
@@ -78,25 +80,25 @@ namespace Module_5
 
             
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //builder.Services.AddSwaggerGen();
 
             
             builder.Services.AddExceptionHandler<GlobalExceptionHandler>(); 
             builder.Services.AddProblemDetails(); 
 
             var app = builder.Build();
-            JsonHelper.GetMessage(101);
+            app.UseMiddleware<RequestResponseMiddleware>();
 
 
             app.UseExceptionHandler();
-            app.UseStaticFiles(); 
+            app.UseStaticFiles();
 
-
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
             app.UseAuthentication();

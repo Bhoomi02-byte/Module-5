@@ -1,49 +1,32 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Diagnostics;
-using Serilog;
 using Module_5.Exceptions;
+using Module_5.Utilities; 
 
 namespace Module_5.Exceptions
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
         {
-            var stopwatch = Stopwatch.StartNew();
+            int statusCode = exception switch
+            {
+                GlobalException => 400,
+                UnauthorizedAccessException => 401,
+                KeyNotFoundException => 404,
+                _ => 500
+            };
 
-            
-            var requestInfo = await RequestInfo.CreateAsync(httpContext);
+            var apiResponse = new ApiResponse( false,statusCode,exception is GlobalException? exception.Message: JsonHelper.GetMessage(127), null);
 
-            
-            var responseInfo = new ResponseInfo(exception);
-            httpContext.Response.StatusCode = responseInfo.StatusCode;
-            httpContext.Response.ContentType = "application/json";
+            context.Response.StatusCode = statusCode;
+            context.Response.ContentType = "application/json";
 
-            string jsonResponse = await responseInfo.SerializeAsync(httpContext);
-            await httpContext.Response.WriteAsync(jsonResponse, cancellationToken);
-
-            stopwatch.Stop();
-            double executionTime = stopwatch.Elapsed.TotalSeconds;
-
-           
-            Log.Error("Timestamp: {Timestamp}\n" +
-                      "IP Address: {IpAddress}\n" +
-                      "Request URL: {RequestUrl}\n" +
-                      "Method: {Method}\n" +
-                      "User: {User}\n" +
-                      "Request Headers: {RequestHeaders}\n" +
-                      "Request Body: {RequestBody}\n" +
-                      "Response Headers: {ResponseHeaders}\n" +
-                      "Status Code: {StatusCode}\n" +
-                      "Execution Time: {ExecutionTime} seconds\n",
-                requestInfo.Timestamp, requestInfo.IpAddress, requestInfo.RequestUrl,
-                requestInfo.Method, requestInfo.User, requestInfo.RequestHeaders,
-                requestInfo.RequestBody, responseInfo.ResponseHeaders,
-                responseInfo.StatusCode, executionTime
-            );
+            string json = JsonSerializer.Serialize(apiResponse);
+            await context.Response.WriteAsync(json, cancellationToken);
 
             return true;
         }
