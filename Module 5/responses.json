@@ -43,14 +43,15 @@
     "143": "You have already liked this post.",
     "144": "You cannot subscribe to yourself.",
     "145": "Subscribed successfully.",
-    "146": "You are already unsubscribed to this author.",
+    "146": "You are need to subscribe the author first.",
     "147": "Unsubscribed successfully.",
     "148": "You cannot unsubscribe to yourself.",
     "149": "You are already subscribed to this author.",
     "150": "You are not authorize to upload this post",
     "151": "Invalid image format.",
     "152": "Image uploaded successfully",
-    "153": "Image is not uploaded! Try again"
+    "153": "Image is not uploaded! Try again",
+    "154": "Validation failed due to missing content!"
 
 }
 

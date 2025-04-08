@@ -17,7 +17,7 @@ namespace Module_5.Controllers
         {
             _userservice = userService;
         }
-
+        //Api to like a post
         [HttpPost("like/{postId}")]
         public async Task<IActionResult> Liked(int postId)
         {
@@ -31,7 +31,7 @@ namespace Module_5.Controllers
             
             return BadRequest(new ApiResponse(false,400,isliked, null)); 
         }
-
+        // Api to unlike a post
         [HttpDelete("unlike/{postId}")]
 
         public async Task<IActionResult> UnLiked(int postId)
@@ -48,6 +48,7 @@ namespace Module_5.Controllers
             return BadRequest(new ApiResponse(false, 400, isUnliked, null));
         }
 
+        //Api to comment on a post
 
         [HttpPost("comment/{postId}")]
         public async Task<IActionResult> Create(int postId, [FromBody] CommentDto commentDto)
@@ -64,6 +65,7 @@ namespace Module_5.Controllers
             return  BadRequest(new ApiResponse(false, 400, response, null));
 
         }
+        //Api to get all comments by post
 
         [HttpGet("comment/{postId}")]
         public async Task<IActionResult> Get(int postId)
@@ -77,6 +79,7 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(133), response));
 
         }
+        //Api to delete a comment
 
         [HttpDelete("{postId}/comment/{commentId}")]
         public async Task<IActionResult> Delete(int postId, int commentId)

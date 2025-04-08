@@ -20,6 +20,8 @@ namespace Module_5.Controllers
             _postService = postService;
         }
 
+        //Api to create a post
+
         [Authorize(Roles = "Author")] 
         [HttpPost("{categoryId}")]
         public async Task<IActionResult> CreatePost(int categoryId, [FromBody] PostDto postDto)
@@ -37,6 +39,8 @@ namespace Module_5.Controllers
             return CreatedAtAction(nameof(CreatePost), response);
         }
 
+        //Api to get all post
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -47,6 +51,8 @@ namespace Module_5.Controllers
 
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(126), posts));
         }
+
+        //Api to get post by postId
 
         [HttpGet("{postId}")]
         public async Task<IActionResult> Get(int postId)
@@ -66,6 +72,8 @@ namespace Module_5.Controllers
 
         }
 
+        //Api to delete a post
+
         [Authorize(Roles = "Author")]
         [HttpDelete("{postId}")]
         public async Task<IActionResult> Delete(int postId)
@@ -82,6 +90,7 @@ namespace Module_5.Controllers
 
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(114), null));
         }
+        //Api to update a post
 
         [Authorize(Roles = "Author")]
         [HttpPut("{postId}")]
@@ -100,6 +109,8 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(115), isUpdated));
         }
 
+        //Api to publish the post
+
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/publish")]
         public async Task<IActionResult>Publish(int postId)
@@ -114,6 +125,8 @@ namespace Module_5.Controllers
 
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(116), null ));
         }
+
+        //Api to unpublish the post
 
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/unpublish")]

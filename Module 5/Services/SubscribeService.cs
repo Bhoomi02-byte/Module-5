@@ -37,7 +37,7 @@ namespace Module_5.Services
             var subscription = await _context.Subscriptions
                 .FirstOrDefaultAsync(s => s.UserId == userId && s.AuthorId == authorId);
 
-           if (subscription!=null)
+           if (subscription == null)
                 return JsonHelper.GetMessage(146);
 
             _context.Subscriptions.Remove(subscription);

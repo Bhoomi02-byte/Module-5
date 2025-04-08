@@ -7,7 +7,9 @@ namespace Module_5.Utilities
         public int StatusCode { get; set; }
         public string Message { get; set; }
         public object? Data { get; set; }
-        public ApiResponse(bool success,int statusCode, string message, object data)
+
+        public ApiResponse() { }
+        public ApiResponse(bool success, int statusCode, string message, object data)
         {
             Success = success;
             StatusCode = statusCode;
@@ -15,6 +17,6 @@ namespace Module_5.Utilities
             Data = data ?? new { };
         }
 
-        
+
     }
 }

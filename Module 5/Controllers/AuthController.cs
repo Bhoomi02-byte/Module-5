@@ -17,7 +17,7 @@ namespace Module_5.Controllers
         {
             _authservice = authService;
         }
-
+        //Api to register as a author/user
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
@@ -36,7 +36,7 @@ namespace Module_5.Controllers
             }));
             
         }
-
+        //Api to login 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {

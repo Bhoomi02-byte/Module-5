@@ -1,34 +1,47 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using Module_5.Exceptions;
-using Module_5.Utilities; 
+using Module_5.Utilities;
+using System.Text.Json;
 
-namespace Module_5.Exceptions
+public class GlobalExceptionHandler : IExceptionHandler
 {
-    public class GlobalExceptionHandler : IExceptionHandler
+    public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
     {
-        public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
+        int statusCode;
+        object responseData = null;
+        string message;
+
+        switch (exception)
         {
-            int statusCode = exception switch
-            {
-                GlobalException => 400,
-                UnauthorizedAccessException => 401,
-                KeyNotFoundException => 404,
-                _ => 500
-            };
+            case GlobalException globalException:
+                statusCode = StatusCodes.Status400BadRequest;
+                message = globalException.Message;
+                break;
 
-            var apiResponse = new ApiResponse( false,statusCode,exception is GlobalException? exception.Message: JsonHelper.GetMessage(127), null);
+            case UnauthorizedAccessException:
+                statusCode = StatusCodes.Status401Unauthorized;
+                message = JsonHelper.GetMessage(127); 
+                break;
 
-            context.Response.StatusCode = statusCode;
-            context.Response.ContentType = "application/json";
+            case KeyNotFoundException:
+                statusCode = StatusCodes.Status404NotFound;
+                message = JsonHelper.GetMessage(127);
+                break;
 
-            string json = JsonSerializer.Serialize(apiResponse);
-            await context.Response.WriteAsync(json, cancellationToken);
-
-            return true;
+            default:
+                statusCode = StatusCodes.Status500InternalServerError;
+                message = JsonHelper.GetMessage(127);
+                break;
         }
+
+        var apiResponse = new ApiResponse( false,statusCode, message, responseData);
+
+        context.Response.StatusCode = statusCode;
+        context.Response.ContentType = "application/json";
+
+        var json = JsonSerializer.Serialize(apiResponse);
+        await context.Response.WriteAsync(json, cancellationToken);
+
+        return true;
     }
 }

@@ -15,7 +15,7 @@ namespace Module_5.Controllers
         {
             _subscribeservice = subscribeservice;
         }
-
+        //Api to subscribe the author
         [HttpPost("subscribe/{authorId}")]
         public async Task<IActionResult> Subscribe(int authorId)
         {
@@ -34,6 +34,7 @@ namespace Module_5.Controllers
 
 
         }
+        //Api to unsubscribe the author
         [HttpDelete("unsubscribe/{authorId}")]
         public async Task<IActionResult> UnSubscribe(int authorId)
         {
