@@ -13,19 +13,14 @@ namespace Module_5.Models.Entities
 
         [Required]
         public bool IsPublished { get; set; } = false;
-
-        
-       //Foreign Keys 
-        
         public int AuthorId { get; set; }
         public User Author { get; set; }
 
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        //Navigation Properties
-        //public ICollection<Comment> Comments { get; set; }
-        //public ICollection<Like> Likes { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<Like>? Likes { get; set; }
     }
 }
 

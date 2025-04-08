@@ -1,51 +1,47 @@
-﻿using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Diagnostics;
-using Serilog;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Module_5.Exceptions;
+using Module_5.Utilities;
+using System.Text.Json;
 
-namespace Module_5.Exceptions
+public class GlobalExceptionHandler : IExceptionHandler
 {
-    public class GlobalExceptionHandler : IExceptionHandler
+    public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
     {
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        int statusCode;
+        object responseData = null;
+        string message;
+
+        switch (exception)
         {
-            var stopwatch = Stopwatch.StartNew();
+            case GlobalException globalException:
+                statusCode = StatusCodes.Status400BadRequest;
+                message = globalException.Message;
+                break;
 
-            
-            var requestInfo = await RequestInfo.CreateAsync(httpContext);
+            case UnauthorizedAccessException:
+                statusCode = StatusCodes.Status401Unauthorized;
+                message = JsonHelper.GetMessage(127); 
+                break;
 
-            
-            var responseInfo = new ResponseInfo(exception);
-            httpContext.Response.StatusCode = responseInfo.StatusCode;
-            httpContext.Response.ContentType = "application/json";
+            case KeyNotFoundException:
+                statusCode = StatusCodes.Status404NotFound;
+                message = JsonHelper.GetMessage(127);
+                break;
 
-            string jsonResponse = await responseInfo.SerializeAsync(httpContext);
-            await httpContext.Response.WriteAsync(jsonResponse, cancellationToken);
-
-            stopwatch.Stop();
-            double executionTime = stopwatch.Elapsed.TotalSeconds;
-
-           
-            Log.Error("Timestamp: {Timestamp}\n" +
-                      "IP Address: {IpAddress}\n" +
-                      "Request URL: {RequestUrl}\n" +
-                      "Method: {Method}\n" +
-                      "User: {User}\n" +
-                      "Request Headers: {RequestHeaders}\n" +
-                      "Request Body: {RequestBody}\n" +
-                      "Response Headers: {ResponseHeaders}\n" +
-                      "Status Code: {StatusCode}\n" +
-                      "Execution Time: {ExecutionTime} seconds\n",
-                requestInfo.Timestamp, requestInfo.IpAddress, requestInfo.RequestUrl,
-                requestInfo.Method, requestInfo.User, requestInfo.RequestHeaders,
-                requestInfo.RequestBody, responseInfo.ResponseHeaders,
-                responseInfo.StatusCode, executionTime
-            );
-
-            return true;
+            default:
+                statusCode = StatusCodes.Status500InternalServerError;
+                message = JsonHelper.GetMessage(127);
+                break;
         }
+
+        var apiResponse = new ApiResponse( false,statusCode, message, responseData);
+
+        context.Response.StatusCode = statusCode;
+        context.Response.ContentType = "application/json";
+
+        var json = JsonSerializer.Serialize(apiResponse);
+        await context.Response.WriteAsync(json, cancellationToken);
+
+        return true;
     }
 }

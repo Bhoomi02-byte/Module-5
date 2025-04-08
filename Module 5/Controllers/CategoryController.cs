@@ -22,7 +22,7 @@ namespace Module_5.Controllers
         {
             _categoryService = categoryService;
         }
-
+        //Api to create a category 
         [Authorize(Roles = "Author")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CategoryDto categoryDto)
@@ -47,6 +47,8 @@ namespace Module_5.Controllers
             }));
         }
 
+        //Api to delete a category by categoryId
+
       [Authorize(Roles = "Author")]
       [HttpDelete("{categoryId}")]
       public async Task<IActionResult> Delete(int categoryId)
@@ -68,7 +70,7 @@ namespace Module_5.Controllers
 
 
         }
-
+        //Api to get all category
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -83,6 +85,8 @@ namespace Module_5.Controllers
 
 
         }
+
+        //Api to update a category
 
         [Authorize(Roles = "Author")]
         [HttpPut("{categoryId}")]
