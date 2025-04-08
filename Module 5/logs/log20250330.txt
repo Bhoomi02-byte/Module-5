@@ -1,0 +1,9 @@
+2025-03-30 10:34:18.181 +05:30 [ERR] Time: 05:04:18 AM (UTC) 
+| IP: [::1] |
+https://localhost:7299/api/category/1 (DELETE) 
+USER: [Bhoomiagarwal] 
+REQUEST_HEADERS: {"Accept":["*/*"],"Connection":["keep-alive"],"Host":["localhost:7299"],"User-Agent":["PostmanRuntime/7.43.3"],"Accept-Encoding":["gzip, deflate, br"],"Authorization":["Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJob29taWFnYXJ3YWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWkxNDE0YWdhcndhbEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3NDMzMjI2NTMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.G5l6nb-ISY0R4rU0gQKaeFH5PC3VDi6gPWQ6qInT6bk"],"Cache-Control":["no-cache"],"Postman-Token":["a6eb7cc6-f076-4946-ba12-6ffb2adeb9aa"]} 
+REQUEST BODY: None 
+RESPONSE_HEADERS: {"Content-Type":["application/json"],"Date":["Sun, 30 Mar 2025 05:04:18 GMT"],"Server":["Kestrel"],"Cache-Control":["no-cache,no-store"],"Expires":["-1"],"Pragma":["no-cache"],"Transfer-Encoding":["chunked"]}
+STATUS_CODE ~ 500 
+EXECUTION_TIME [0.0733714 Seconds]

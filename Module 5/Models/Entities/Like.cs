@@ -4,13 +4,13 @@ namespace Module_5.Models.Entities
 {
     public class Like
     {
-        public int LikeId { get; set; }
+        public int Id { get; set; }
 
-        // Foreign Keys & 
+         
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        //Navigation Properties
+        
         public User? User { get; set; }
 
 
