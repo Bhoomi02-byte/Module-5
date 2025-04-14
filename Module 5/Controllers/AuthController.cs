@@ -17,7 +17,7 @@ namespace Module_5.Controllers
         {
             _authservice = authService;
         }
-
+        //Api to register as a author/user
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
@@ -32,11 +32,11 @@ namespace Module_5.Controllers
                 registerDto.Name,
                 registerDto.Email,
                 Role = registerDto.UserRole.ToString()
-            ,
+            
             }));
             
         }
-
+        //Api to login 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
@@ -45,7 +45,7 @@ namespace Module_5.Controllers
             if (response==null)
                 return NotFound(new ApiResponse(false, 400,JsonHelper.GetMessage(102), null));
 
-            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), response));   
+            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(123), response));   
         }
     }
 }
