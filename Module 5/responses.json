@@ -1,7 +1,7 @@
 {
     "101": "User with this email already exists.",
     "102": "User does not exist.",
-    "103": "Invalid User ID in token.",
+    "103": "Invalid User ID in token. ",
     "104": "Unauthorized access.",
     "105": "Unauthorized request.",
     "106": "A Category with this name exists.",
@@ -27,7 +27,32 @@
     "126": "Post Retreived successfully",
     "127": "An unexpected error occurred.",
     "128": "Anonymous User (Not Logged In)",
-    "129": "Email failed to send!"
+    "129": "Email failed to send!",
+    "130": "Post UnLiked successfully",
+    "131": "Comment Added successfully",
+    "132": "No comments are in this post",
+    "133": "Comments retrieved successfully!!",
+    "134": "Comment deleted successfully",
+    "135": "You are not authorized to delete this comment.",
+    "136": "Comment not found.",
+    "137": "Comment Added successfully",
+    "138": "Post does not exist",
+    "140": "Post Unliked successfully",
+    "141": "You have not liked this post.",
+    "142": "Post liked successfully",
+    "143": "You have already liked this post.",
+    "144": "You cannot subscribe to yourself.",
+    "145": "Subscribed successfully.",
+    "146": "You are need to subscribe the author first.",
+    "147": "Unsubscribed successfully.",
+    "148": "You cannot unsubscribe to yourself.",
+    "149": "You are already subscribed to this author.",
+    "150": "You are not authorize to upload this post",
+    "151": "Invalid image format.",
+    "152": "Image uploaded successfully",
+    "153": "Image is not uploaded! Try again",
+    "154": "Validation failed due to missing content!"
 
 }
+
 

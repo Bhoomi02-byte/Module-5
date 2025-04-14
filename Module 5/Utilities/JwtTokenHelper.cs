@@ -21,8 +21,8 @@ namespace Module_5.Utilities
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             string roleStr = Convert.ToString(role) ?? "";
-            var claims = new List<Claim>
 
+            var claims = new List<Claim>
             {   new(ClaimTypes.NameIdentifier, userId.ToString()),
                 new(ClaimTypes.Name, name),
                 new(ClaimTypes.Email, email),

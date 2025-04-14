@@ -20,17 +20,16 @@ namespace Module_5.Controllers
             _postService = postService;
         }
 
+        //Api to create a post
+
         [Authorize(Roles = "Author")] 
         [HttpPost("{categoryId}")]
         public async Task<IActionResult> CreatePost(int categoryId, [FromBody] PostDto postDto)
         {
-          
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (userIdClaim == null)
-                return BadRequest(new ApiResponse(false, 401, JsonHelper.GetMessage(105), null));
-
-            int userId = int.Parse(userIdClaim);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
             var response = await _postService.CreateAsync(userId, categoryId, postDto);
 
@@ -40,13 +39,12 @@ namespace Module_5.Controllers
             return CreatedAtAction(nameof(CreatePost), response);
         }
 
+        //Api to get all post
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value); 
-            var userRole = User.FindFirst(ClaimTypes.Role)?.Value ; 
-            
-            var posts = await _postService.GetAllAsync(userId, userRole);
+            var posts = await _postService.GetAllAsync();
 
             if (posts == null || !posts.Any())
                 return NotFound(new ApiResponse(false, 404, JsonHelper.GetMessage(118), null));
@@ -54,11 +52,15 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(126), posts));
         }
 
+        //Api to get post by postId
+
         [HttpGet("{postId}")]
         public async Task<IActionResult> Get(int postId)
 
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
             var post = await _postService.GetAsync(postId, userId, userRole);
@@ -70,17 +72,16 @@ namespace Module_5.Controllers
 
         }
 
+        //Api to delete a post
+
         [Authorize(Roles = "Author")]
         [HttpDelete("{postId}")]
         public async Task<IActionResult> Delete(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            
-             if (userIdClaim == null )
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
-            int userId = int.Parse(userIdClaim.Value);
-           
 
             bool isDeleted = await _postService.DeleteAsync(postId, userId);
 
@@ -89,18 +90,16 @@ namespace Module_5.Controllers
 
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(114), null));
         }
+        //Api to update a post
 
         [Authorize(Roles = "Author")]
         [HttpPut("{postId}")]
         public async Task<IActionResult> Update(int postId, [FromBody] PostDto postDto)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-           
-                if (userIdClaim == null )
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
-            int userId = int.Parse(userIdClaim.Value);
-            
 
             var isUpdated = await _postService.UpdateAsync(postId, userId, postDto);
 
@@ -110,17 +109,15 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(115), isUpdated));
         }
 
+        //Api to publish the post
+
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/publish")]
         public async Task<IActionResult>Publish(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            
-            if (userIdClaim == null )
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-
-            int userId = int.Parse(userIdClaim.Value);
-            
             var isPublished = await _postService.PublishAsync(postId, userId);
 
             if (isPublished == null)
@@ -129,16 +126,15 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(116), null ));
         }
 
+        //Api to unpublish the post
+
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/unpublish")]
         public async Task<IActionResult> UnPublish(int postId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-
-            if (userIdClaim == null)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
                 return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
-
-            int userId = int.Parse(userIdClaim.Value);
 
             var isPublished = await _postService.UnPublishAsync(postId, userId);
 
@@ -147,11 +143,24 @@ namespace Module_5.Controllers
 
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(117), null));
         }
+       
+        [HttpPost("{postId}/upload-image")]
+        public async Task<IActionResult> UploadImage(int postId, [FromForm] IFormFile image)
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (userId == null)
+                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
 
+            if (image == null || image.Length == 0)
+                return BadRequest(new ApiResponse(false,400, JsonHelper.GetMessage(153), null));
 
+            var result = await _postService.UploadImageAsync(postId,userId, image, Request);
 
+            if (result == JsonHelper.GetMessage(152))
+                return Ok(new ApiResponse(true,201,result,null));
 
-
+            return BadRequest(new ApiResponse(false,400,result,null ));
+        }
 
     }
 }
