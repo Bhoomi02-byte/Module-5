@@ -1,4 +1,6 @@
-﻿using Azure;
+﻿using System.Security.Claims;
+using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Module_5.DTO;
 using Module_5.Services;
@@ -17,6 +19,7 @@ namespace Module_5.Controllers
         {
             _authservice = authService;
         }
+
         //Api to register as a author/user
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
@@ -46,6 +49,26 @@ namespace Module_5.Controllers
                 return NotFound(new ApiResponse(false, 400,JsonHelper.GetMessage(102), null));
 
             return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(123), response));   
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
+            }
+
+            var result = await _authservice.LogoutAsync(userId);
+            if(result== JsonHelper.GetMessage(156))
+            {
+                return Ok(new ApiResponse(true, 201, result, null));
+            }
+
+            return Ok(new ApiResponse(false, 400, result, null));
         }
     }
 }

@@ -2,13 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Module_5.DTO;
-using Module_5.Models.Entities;
+using Module_5.Collections;
 using Module_5.Services;
 using Module_5.Utilities;
-
-
-
-
 namespace Module_5.Controllers
 {
 
@@ -27,15 +23,15 @@ namespace Module_5.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CategoryDto categoryDto)
         {
-           
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
-            bool isCreated = await _categoryService.CreateAsync(categoryDto, userId);
+            bool isCreated = await _categoryService.CreateAsync(categoryDto,userId);
             if (!isCreated)
             {
                 return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(106), null));
@@ -49,24 +45,26 @@ namespace Module_5.Controllers
 
         //Api to delete a category by categoryId
 
-      [Authorize(Roles = "Author")]
-      [HttpDelete("{categoryId}")]
-      public async Task<IActionResult> Delete(int categoryId)
+        [Authorize(Roles = "Author")]
+        [HttpDelete("{categoryId}")]
+        public async Task<IActionResult> Delete(string categoryId)
         {
-           
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
-            bool isDeleted = await _categoryService.DeleteAsync(categoryId, userId);
-            if (!isDeleted)
+            var isDeleted = await _categoryService.DeleteAsync(categoryId, userId);
+            if (isDeleted == JsonHelper.GetMessage(109))
             {
-                return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(111), null));
+                return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(109), null));
+               
             }
-            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(109),null));
+            return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(111), null));
+
 
 
         }
@@ -81,7 +79,7 @@ namespace Module_5.Controllers
                 return NotFound(new ApiResponse(false, 404, JsonHelper.GetMessage(107), null));
             }
 
-       return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(124), categories));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(124), categories));
 
 
         }
@@ -90,15 +88,15 @@ namespace Module_5.Controllers
 
         [Authorize(Roles = "Author")]
         [HttpPut("{categoryId}")]
-        public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, int categoryId)
+        public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, string categoryId)
         {
-           var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-           if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
-
-            var isUpdated= await _categoryService.UpdateAsync(categoryDto,userId,categoryId);
+            var isUpdated = await _categoryService.UpdateAsync(categoryDto, userId, categoryId);
 
             if (isUpdated == null)
                 return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(110), null));
@@ -106,14 +104,13 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), isUpdated));
 
 
-
         }
-      
 
 
-        
+
+
 
     }
 
- }
+}
 

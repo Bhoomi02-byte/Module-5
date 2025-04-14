@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Module_5.Collections;
 using Module_5.Data;
-using Module_5.Models.Entities;
+using MongoDB.Driver;
 
 namespace Module_5.Services
 {
     public class SubscribeService : ISubscribeService
     {
-        private readonly BlogDbContext _context;
+        private readonly IMongoDbContext _context;
 
-        public SubscribeService(BlogDbContext context)
+        public SubscribeService(IMongoDbContext context)
         {
             _context = context;
         }
-        public async Task<string> SubscribeAsync(int userId, int authorId)
+        public async Task<string> SubscribeAsync(string userId, string authorId)
         {
             var exists = await _context.Subscriptions
-        .AnyAsync(s => s.UserId == userId && s.AuthorId == authorId);
+        .Find(s => s.UserId == userId && s.AuthorId == authorId).AnyAsync();
 
             if (exists)
                 return JsonHelper.GetMessage(149);
@@ -23,28 +24,26 @@ namespace Module_5.Services
             var subscription = new Subscription
             {
                 UserId = userId,
-                AuthorId = authorId,   
+                AuthorId = authorId,
             };
 
-            _context.Subscriptions.Add(subscription);
-            await _context.SaveChangesAsync();
-
+           await _context.Subscriptions.InsertOneAsync(subscription);
+           
             return JsonHelper.GetMessage(145);
         }
 
-        public async Task<string> UnsubscribeAsync(int userId, int authorId)
+        public async Task<string> UnsubscribeAsync(string userId, string authorId)
         {
             var subscription = await _context.Subscriptions
-                .FirstOrDefaultAsync(s => s.UserId == userId && s.AuthorId == authorId);
+                .Find(s => s.UserId == userId && s.AuthorId == authorId).FirstOrDefaultAsync();
 
-           if (subscription == null)
+            if (subscription == null)
                 return JsonHelper.GetMessage(146);
 
-            _context.Subscriptions.Remove(subscription);
-            await _context.SaveChangesAsync();
-
+          await  _context.Subscriptions.DeleteOneAsync(s => s.Id == subscription.Id);
+         
             return JsonHelper.GetMessage(147);
         }
     }
- }
+}
 

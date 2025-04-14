@@ -17,15 +17,18 @@ namespace Module_5.Controllers
         }
         //Api to subscribe the author
         [HttpPost("subscribe/{authorId}")]
-        public async Task<IActionResult> Subscribe(int authorId)
+        public async Task<IActionResult> Subscribe(string authorId)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            if (userId == null)
-                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
+            }
 
             if (userId == authorId)
-             return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(144), null));
-            
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(144), null));
+
             var result = await _subscribeservice.SubscribeAsync(userId, authorId);
             if (result == JsonHelper.GetMessage(145))
                 return Ok(new ApiResponse(true, 200, result, null));
@@ -36,15 +39,18 @@ namespace Module_5.Controllers
         }
         //Api to unsubscribe the author
         [HttpDelete("unsubscribe/{authorId}")]
-        public async Task<IActionResult> UnSubscribe(int authorId)
+        public async Task<IActionResult> UnSubscribe(string authorId)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            if (userId == null)
-                return Unauthorized(new ApiResponse(false, 401, JsonHelper.GetMessage(104), null));
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
+            }
 
             if (userId == authorId)
-            return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(148), null));
-            
+                return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(148), null));
+
             var result = await _subscribeservice.UnsubscribeAsync(userId, authorId);
             if (result == JsonHelper.GetMessage(147))
                 return Ok(new ApiResponse(true, 200, result, null));

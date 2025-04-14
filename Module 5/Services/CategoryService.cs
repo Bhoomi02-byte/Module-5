@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Module_5.Data;
-using Module_5.Models.Entities;
+using Module_5.Collections;
 using Module_5.DTO;
 using MimeKit.Encodings;
+using MongoDB.Driver;
 
 namespace Module_5.Services
 {
-    public class CategoryService:ICategoryService
+    public class CategoryService : ICategoryService
     {
-        private readonly BlogDbContext _context;
-        public CategoryService(BlogDbContext context)
+        private readonly IMongoDbContext _db;
+        public CategoryService(IMongoDbContext db)
         {
-            _context = context;
+            _db = db;
         }
-        public async Task<bool> CreateAsync(CategoryDto categoryDto, int userId)
+        public async Task<bool> CreateAsync(CategoryDto categoryDto, string userId)
         {
-            bool existingCategory = await _context.Categories.AnyAsync(c => c.CategoryName == categoryDto.CategoryName);
+            bool existingCategory = await _db.Categories.Find(c => c.CategoryName == categoryDto.CategoryName).AnyAsync();
             if (existingCategory)
             {
                 return false;
@@ -24,41 +25,44 @@ namespace Module_5.Services
             {
                 CategoryName = categoryDto.CategoryName,
                 Description = categoryDto.Description,
-                AuthorId=userId
-                
+                AuthorId = userId
+
             };
-            _context.Categories.Add(newCategory);
-            var result=await _context.SaveChangesAsync();
-            return result > 0;
+            await _db.Categories.InsertOneAsync(newCategory);
+
+            return true;
         }
-        public async Task<bool> DeleteAsync(int categoryId, int userId)
+        public async Task<string> DeleteAsync(string categoryId, string userId)
         {
-            var category = await _context.Categories.FindAsync(categoryId);
+            var category = await _db.Categories.Find(c => c.Id == categoryId).FirstOrDefaultAsync();
             if (category == null || category.AuthorId != userId)
             {
-                return false;
+                return JsonHelper.GetMessage(111);
             }
-           
-            _context.Categories.Remove(category);
-            var result = await _context.SaveChangesAsync();
-            return result > 0;
-         }
+            bool hasPosts = await _db.Posts.Find(p => p.CategoryId == categoryId).AnyAsync();
+            if (hasPosts) return JsonHelper.GetMessage(155);
+
+            await _db.Categories.DeleteOneAsync(c => c.Id == categoryId);
+
+            return JsonHelper.GetMessage(109);
+        }
 
         public async Task<List<object>> GetAllAsync()
         {
-            return await _context.Categories
-                .AsNoTracking() 
-                .Select(c => new 
-                     {   
-                         CategoryId=c.Id,
-                         c.CategoryName, 
-                         c.Description
-                     })
-                 .ToListAsync<object>();
+            var categories = await _db.Categories.Find(_ => true).ToListAsync();
+            return categories
+                .Select(c => new
+                {
+                    CategoryId = c.Id,
+                    c.CategoryName,
+                    c.Description
+                })
+                 .Cast<object>()
+                 .ToList();
         }
-        public async Task<CategoryDto?>UpdateAsync(CategoryDto categoryDto, int userId ,int categoryId)
+        public async Task<CategoryDto?> UpdateAsync(CategoryDto categoryDto, string userId, string categoryId)
         {
-            var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == categoryId);
+            var category = await _db.Categories.Find(p => p.Id == categoryId).FirstOrDefaultAsync();
 
             if (category == null || category.AuthorId != userId)
                 return null;
@@ -66,9 +70,7 @@ namespace Module_5.Services
             category.CategoryName = categoryDto.CategoryName;
             category.Description = categoryDto.Description;
 
-            _context.Categories.Update(category);
-            await _context.SaveChangesAsync();
-
+            await _db.Categories.ReplaceOneAsync(c => c.Id == categoryId, category);
             return new CategoryDto
             {
                 CategoryName = category.CategoryName,
@@ -76,9 +78,7 @@ namespace Module_5.Services
             };
         }
 
-
-
     }
 
-    
+
 }
