@@ -1,0 +1,54 @@
+2025-04-10 12:47:58.472 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-10T07:17:58.4713479Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2065381 sec
+
+2025-04-10 12:50:47.587 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-10T07:20:47.5871991Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/register
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"149","Postman-Token":"e26fd8f1-7019-45d8-bfa4-0068f5490148"}
+Request Body: {
+    "name":"Bhoomi",
+    "email":"Bhoomi1414agarwal@gmail.com",
+     "password": "######",
+  "confirmPassword": "######",
+  "userRole": 0
+}
+
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"User Registered Successfully.","data":{"name":"Bhoomi","email":"Bhoomi1414agarwal@gmail.com","role":"Author"}}
+Execution Time: 9.0565818 sec
+
+2025-04-10 13:06:15.325 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-10T07:36:15.3238403Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2733061 sec
+
+2025-04-10 13:07:00.694 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-10T07:37:00.6941233Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"75","Postman-Token":"e700185d-257e-4dcd-bd25-839d26f74cbd"}
+Request Body: {
+    "email":"Bhoomi1414agarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomi1414agarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3Zjc3MTQ4ZDI3NmJkNTZjMzYwMTc4ZCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWkxNDE0YWdhcndhbEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3NDQyODI2MjAsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.qEfKL9VpEnGQ0RQgKdeVfe7Q8tmgcOnLHysEkhbxzPA"}}
+Execution Time: 1.8528695 sec
+

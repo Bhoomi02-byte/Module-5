@@ -1,0 +1,42 @@
+**Differences with mysql and mongoose to query the database:-
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+*Feature*                   *MySQL*                                    *MongoDB*                            *Description*
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1)Database Type	            Relational (SQL)	                        NoSQL (Document-oriented)	        MySQL uses tables and rows with fixed schema, MongoDB uses collections and JSON-like documents.
+
+2)Schema	                Strict, defined using migrations         	Flexible, schema-less            	EF requires schema definitions and migrations; MongoDB allows dynamic fields.
+
+3)Data Storage Format	    Tables with rows and columns	            BSON (Binary JSON) documents	    MongoDB stores data as documents; great for deeply nested or hierarchical data.
+
+4)Query Style	            LINQ (Where(), .Include())	                Filter & Builders                   EF Core allows LINQ-style queries, MongoDB uses its own querying syntax.
+                                                                        (Find(), Builders.Filter)	
+
+5)Joins                   	Native support (.Include())              	No native joins; manual 	        EF makes relationships easy with foreign keys; MongoDB needs manual joins or .Lookup() in aggregation.
+                                                                        or via aggregation
+
+6)ACID Transactions         Full support	                            Limited support 	                MySQL is built for transactions; MongoDB added multi-doc transactions later.
+  Transactions                                                          (added in newer versions)
+
+7)Relationships	            One-to-one, one-to-many, 	                Usually embedded documents 	        EF uses navigation properties and foreign keys; MongoDB favors embedding or referencing manually.
+                            many-to-many with foreign keys              
+
+8)Migration                 Yes (EF Core migrations)	                No built-in migrations       	    MongoDB doesn't require schema migrations unless enforced in app logic.
+  Support	                                                           (manual or use third-party tools)
+
+9)Scalability	            Vertical scaling preferred	                Horizontal scaling (sharding)	    MongoDB is built for scale-out architecture; MySQL is more limited in that regard.
+
+10)Setup & Tools	        DbContext, LINQ, 	                        IMongoCollection<T>, MongoDB.	    EF Core is tightly integrated with ASP.NET Core; MongoDB needs manual collection access.
+   in .NET                  AddDbContext via EF Core                    Driver NuGet package
+
+11)Performance           	Slower for high write throughput	        Very fast writes due to           	MongoDB can write faster since there’s no schema validation by default.
+                                                                        schema flexibility
+
+12)Best For	                Structured, transactional apps           	Flexible, fast-changing apps 	     MySQL fits strict structure use cases, MongoDB shines with evolving data models.
+                             (e.g., banking, ERP)                      (e.g., blogs, analytics, social media)
+
+13)Tooling & UI	            MySQL Workbench, SSMS, HeidiSQL	            MongoDB Compass, Robo 3T, Atlas	     MongoDB and MySQL both offer rich UIs and dashboards for queries.
+
+14)Cloud Support	        Available on AWS , Azure DB	                 MongoDB Atlas, Azure Cosmos DB 	  Both are cloud-friendly with managed options.
+                             
+                             

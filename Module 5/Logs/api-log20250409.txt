@@ -1,0 +1,55 @@
+2025-04-09 12:40:07.767 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-09T07:10:07.7666119Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.1390179 sec
+
+2025-04-09 12:40:56.982 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-09T07:10:56.9815309Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.0875827 sec
+
+2025-04-09 12:55:55.642 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-09T07:25:55.6418364Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.117605 sec
+
+2025-04-09 13:05:58.959 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-09T07:35:58.9588657Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.1877958 sec
+
+2025-04-09 13:06:49.637 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-09T07:36:49.6349274Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2269826 sec
+

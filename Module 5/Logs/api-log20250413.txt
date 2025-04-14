@@ -1,0 +1,485 @@
+2025-04-13 00:42:44.730 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:12:44.7296404Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.6658067 sec
+
+2025-04-13 00:43:37.298 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:13:37.2983790Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"0a7ede72-55da-4ec7-9dce-df7e70a113b8"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzIxNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.Zvn8ZqguCOQdAod18Zq-rqcSF9PX5frbqLLj79ADjtY"}}
+Execution Time: 0.8282787 sec
+
+2025-04-13 00:44:27.130 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:14:27.1308579Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzIxNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.Zvn8ZqguCOQdAod18Zq-rqcSF9PX5frbqLLj79ADjtY","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"e5347a19-5be4-496b-bec0-7ec5e61b8790"}
+Request Body: 
+Status Code: 200
+Response Body: Logout successful. Token invalidated.
+Execution Time: 0.2027691 sec
+
+2025-04-13 00:45:42.332 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:15:42.3324686Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzIxNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.Zvn8ZqguCOQdAod18Zq-rqcSF9PX5frbqLLj79ADjtY","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"49b13917-6da0-4fd0-8462-03dddd09a571"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.006676 sec
+
+2025-04-13 00:45:52.627 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:15:52.6270582Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"80d4ec7e-fc84-4e1c-be94-b4376c75ff07"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzM1MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.fAxImuIoFeJr4CYvGN7wvScZBSyhNux7FoJ4cGw4fog"}}
+Execution Time: 0.2750175 sec
+
+2025-04-13 00:46:12.030 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:16:12.0309160Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzM1MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.fAxImuIoFeJr4CYvGN7wvScZBSyhNux7FoJ4cGw4fogY","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"09b9c609-f7c5-4bac-9350-52df118e79b9"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.0042298 sec
+
+2025-04-13 00:46:17.361 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:16:17.3619254Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzM1MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.fAxImuIoFeJr4CYvGN7wvScZBSyhNux7FoJ4cGw4fogY","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"cee78e48-9b6b-46a6-af19-5be26c5e700d"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.0041035 sec
+
+2025-04-13 00:48:18.543 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:18:18.5431790Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2962136 sec
+
+2025-04-13 00:48:24.778 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:18:24.7784670Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"eba35093-2ffb-47fa-9284-f26fd30d5af5"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzUwNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.e0w1sxdqWxp5m4jBZqzixm-lTihWP_A7lg6x8NsgQkE"}}
+Execution Time: 0.7272731 sec
+
+2025-04-13 00:48:46.823 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:18:46.8232543Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDQ5NzUwNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.e0w1sxdqWxp5m4jBZqzixm-lTihWP_A7lg6x8NsgQkE","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"105940af-2daf-415c-b7ec-e697d4b1ba65"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.0282465 sec
+
+2025-04-13 01:01:46.184 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:31:46.1841057Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.3251905 sec
+
+2025-04-13 01:01:58.078 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:31:58.0783423Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"fa2af54e-33d2-4c00-bbd5-88c664e9032d"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ0OTgzMTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.THwayAVCaz84VPb1Fi5s85OMNpV2IkhJVSVHhul2Nqc"}}
+Execution Time: 0.6735169 sec
+
+2025-04-13 01:02:25.350 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:32:25.3501583Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ0OTgzMTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.THwayAVCaz84VPb1Fi5s85OMNpV2IkhJVSVHhul2Nqc","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"68bbbc67-4fe0-42f1-8ebd-cfb100de9752"}
+Request Body: 
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.0927134 sec
+
+2025-04-13 01:03:45.758 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:33:45.7581737Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"873f3b19-d520-49fd-a06e-9f7821918c2a"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ0OTg0MjUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.DlOKT8xD2Zcqiri6cyXIrdzMDhD7bL7ZOTlRygXjdNg"}}
+Execution Time: 0.2844464 sec
+
+2025-04-13 01:04:03.161 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:34:03.1618709Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ0OTg0MjUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.DlOKT8xD2Zcqiri6cyXIrdzMDhD7bL7ZOTlRygXjdNg","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"30515383-390a-4767-9c73-d0dc6e60537d"}
+Request Body: 
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.005076 sec
+
+2025-04-13 01:04:53.036 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:34:53.0362767Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"43b0b55f-7f7b-4942-a168-2f2920ee9d24"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZjhlY2U4NWE3YjI1OGM0NGQ0MzU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ0OTg0OTMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.A6zRARsL8mv0sfVJonbTY1wiIZrmZoeZgXro26EJN0k"}}
+Execution Time: 0.1463708 sec
+
+2025-04-13 01:05:17.473 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:35:17.4736211Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"09ca141c-0955-4e0e-b9c9-6c24b23e94c0"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 404
+Response Body: {"success":false,"statusCode":400,"message":"User does not exist.","data":{}}
+Execution Time: 0.0184904 sec
+
+2025-04-13 01:05:30.913 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:35:30.9136200Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/register
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"145","Postman-Token":"61f9a2c2-2a11-4814-a28d-eef6ff842c5b"}
+Request Body: {
+    "name":"Bhoomi",
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######",
+  "confirmPassword": "######",
+  "userRole": 0
+}
+
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"User Registered Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author"}}
+Execution Time: 6.4694444 sec
+
+2025-04-13 01:05:35.020 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:35:35.0203218Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"3214ed5c-847a-47e9-be0a-aec7ce7fe1d5"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ0OTg1MzUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.kIEAthzQH2-de1HavFLarYFXcdph43m-duKnfgqqR5w"}}
+Execution Time: 0.1318297 sec
+
+2025-04-13 01:05:49.752 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:35:49.7520156Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ0OTg1MzUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"ec4ccdc4-9358-4aae-a061-4ee865642da8"}
+Request Body: 
+Status Code: 401
+Response Body: 
+Execution Time: 0.0310613 sec
+
+2025-04-13 01:09:16.759 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:39:16.7591865Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2854185 sec
+
+2025-04-13 01:10:29.542 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:40:29.5424605Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.285311 sec
+
+2025-04-13 01:13:20.293 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-12T19:43:20.2935624Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"3fd1fef9-d965-477b-a8b8-afd7a8bd1b22"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ0OTkwMDAsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.j6vmdDd3fxheueMpLCkQexGJurLWOiIKYk1nkUiaCLQ"}}
+Execution Time: 0.7070001 sec
+
+2025-04-13 10:26:33.047 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T04:56:33.0466940Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.9205177 sec
+
+2025-04-13 10:27:15.064 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T04:57:15.0640354Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"31becc2c-c15c-4aaf-ab8b-8ffe038855bb"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ1MzIyMzQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0._NpeEM02briOqSV9FDYlUyUsAtwQvBBTihNibiHk5DU"}}
+Execution Time: 1.4012552 sec
+
+2025-04-13 10:30:54.584 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T05:00:54.5832838Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.7023486 sec
+
+2025-04-13 11:31:22.330 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:01:22.3289311Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.1968451 sec
+
+2025-04-13 11:31:38.544 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:01:38.5443272Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"6f5560e5-45da-4799-b2d2-d044b1b9fbfb"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ1MzYwOTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.qQGZZ8RXAFmxateEvyaxFKkKVsxucKcRqxAFkpETOms"}}
+Execution Time: 1.8602859 sec
+
+2025-04-13 11:32:03.261 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:02:03.2613176Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ1MzYwOTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.qQGZZ8RXAFmxateEvyaxFKkKVsxucKcRqxAFkpETOms","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"0aedcc0f-e3d3-47ac-8fdc-8f0d87ccd3da"}
+Request Body: 
+Status Code: 200
+Response Body: Logout successful
+Execution Time: 0.3165372 sec
+
+2025-04-13 11:32:32.311 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:02:32.3119743Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ1MzYwOTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.qQGZZ8RXAFmxateEvyaxFKkKVsxucKcRqxAFkpETOms","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"e5102296-b3b8-4725-8d4b-4b222df4ec74"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.0139842 sec
+
+2025-04-13 12:01:47.358 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:31:47.3570167Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2106328 sec
+
+2025-04-13 12:01:50.662 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:31:50.6623982Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjAiLCJleHAiOjE3NDQ1MzYwOTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.qQGZZ8RXAFmxateEvyaxFKkKVsxucKcRqxAFkpETOms","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"4d319147-d413-46ac-bf36-6edc1f609181"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "Description": "Cargo pants are out of fashion"
+}
+Status Code: 401
+Response Body: Token is no longer valid (version mismatch).
+Execution Time: 0.1350934 sec
+
+2025-04-13 12:01:58.288 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:31:58.2884630Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"8f96f55f-beae-43c1-adb8-27454d67e429"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjEiLCJleHAiOjE3NDQ1Mzc5MTgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.Q0pFsxsUtArIq-MgzTKvkaEsBEDlX_Ka4fiA1KyAf5I"}}
+Execution Time: 1.835335 sec
+
+2025-04-13 12:04:38.739 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:34:38.7387441Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.1465549 sec
+
+2025-04-13 12:05:01.478 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:35:01.4783259Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"76cf2f62-3944-46a7-ae04-81c6ba1b3d65"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjEiLCJleHAiOjE3NDQ1MzgxMDEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.QgMYviaW5vVmKCZL609flbmsF95lFYfopa0Tan6QB0k"}}
+Execution Time: 1.4980312 sec
+
+2025-04-13 12:05:20.652 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:35:20.6528803Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjEiLCJleHAiOjE3NDQ1MzgxMDEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.QgMYviaW5vVmKCZL609flbmsF95lFYfopa0Tan6QB0k","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"fc80dc02-9fa1-40ec-935b-5fb9ffbf804d"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logout successfully!!","data":"Logout successfully!!"}
+Execution Time: 0.3432678 sec
+
+2025-04-13 12:08:32.735 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:38:32.7356090Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"71","Postman-Token":"82e5a29f-32c6-4058-b685-23680d4e7ee9"}
+Request Body: {
+    "email":"Bhoomiagarwal@gmail.com",
+     "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomiagarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ1MzgzMTIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.GlYKb4ZZQ7nsaAzGRuzvwvwI9zyVQcG6sHyUymGvk8c"}}
+Execution Time: 0.3007653 sec
+
+2025-04-13 12:08:49.154 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-13T06:38:49.1545625Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/logout
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY3ZmFjMDdjZDAxYWYzNGYyM2EzMmFiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJCaG9vbWkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJCaG9vbWlhZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsIlRva2VuVmVyc2lvbiI6IjIiLCJleHAiOjE3NDQ1MzgzMTIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.GlYKb4ZZQ7nsaAzGRuzvwvwI9zyVQcG6sHyUymGvk8c","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"a3c36e07-b12c-4b9c-a707-fd4319ff51db"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logout successfully!!","data":"Logout successfully!!"}
+Execution Time: 0.0282192 sec
+

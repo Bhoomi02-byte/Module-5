@@ -2,13 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Module_5.DTO;
-using Module_5.Models.Entities;
+using Module_5.Collections;
 using Module_5.Services;
 using Module_5.Utilities;
-
-
-
-
 namespace Module_5.Controllers
 {
 
@@ -22,20 +18,29 @@ namespace Module_5.Controllers
         {
             _categoryService = categoryService;
         }
-        //Api to create a category 
+
+        /// <summary>
+        /// Creates a new category. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryDto">The details of the category to be created (name and description).</param>
+        /// <returns>
+        /// 201 Created with category info if successful,  
+        /// 400 Conflict if the category already exists,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
         [Authorize(Roles = "Author")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CategoryDto categoryDto)
         {
-           
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
-            bool isCreated = await _categoryService.CreateAsync(categoryDto, userId);
+            bool isCreated = await _categoryService.CreateAsync(categoryDto,userId);
             if (!isCreated)
             {
                 return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(106), null));
@@ -47,30 +52,48 @@ namespace Module_5.Controllers
             }));
         }
 
-        //Api to delete a category by categoryId
 
-      [Authorize(Roles = "Author")]
-      [HttpDelete("{categoryId}")]
-      public async Task<IActionResult> Delete(int categoryId)
+        /// <summary>
+        /// Deletes a category by its ID. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryId">The ID of the category to be deleted.</param>
+        /// <returns>
+        /// 201 OK if successfully deleted,  
+        /// 400 Conflict if deletion fails,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
+        [Authorize(Roles = "Author")]
+        [HttpDelete("{categoryId}")]
+        public async Task<IActionResult> Delete(string categoryId)
         {
-           
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
 
-            bool isDeleted = await _categoryService.DeleteAsync(categoryId, userId);
-            if (!isDeleted)
+            var isDeleted = await _categoryService.DeleteAsync(categoryId, userId);
+            if (isDeleted == JsonHelper.GetMessage(109))
             {
-                return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(111), null));
+                return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(109), null));
+               
             }
-            return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(109),null));
+            return Conflict(new ApiResponse(false, 400, JsonHelper.GetMessage(111), null));
+
 
 
         }
-        //Api to get all category
+
+
+        /// <summary>
+        /// Retrieves all categories in the system.
+        /// </summary>
+        /// <returns>
+        /// 200 OK with the list of categories,  
+        /// 404 Not Found if no categories are available.
+        /// </returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -81,24 +104,32 @@ namespace Module_5.Controllers
                 return NotFound(new ApiResponse(false, 404, JsonHelper.GetMessage(107), null));
             }
 
-       return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(124), categories));
+            return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(124), categories));
 
 
         }
 
-        //Api to update a category
-
+        /// <summary>
+        /// Updates a category by ID. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryDto">The updated details of the category.</param>
+        /// <param name="categoryId">The ID of the category to update.</param>
+        /// <returns>
+        /// 201 OK if the update is successful,  
+        /// 403 Not Found if the category doesn't exist or the user is unauthorized,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
         [Authorize(Roles = "Author")]
         [HttpPut("{categoryId}")]
-        public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, int categoryId)
+        public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, string categoryId)
         {
-           var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-           if (!int.TryParse(userIdClaim, out int userId))
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest(new ApiResponse(false, 400, JsonHelper.GetMessage(103), null));
             }
-
-            var isUpdated= await _categoryService.UpdateAsync(categoryDto,userId,categoryId);
+            var isUpdated = await _categoryService.UpdateAsync(categoryDto, userId, categoryId);
 
             if (isUpdated == null)
                 return NotFound(new ApiResponse(false, 403, JsonHelper.GetMessage(110), null));
@@ -106,14 +137,7 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 201, JsonHelper.GetMessage(125), isUpdated));
 
 
-
         }
-      
-
-
-        
-
     }
-
- }
+}
 

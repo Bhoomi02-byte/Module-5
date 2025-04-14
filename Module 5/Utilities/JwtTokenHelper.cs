@@ -1,5 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Module_5.Models.Entities;
+using Module_5.Collections;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -14,7 +14,7 @@ namespace Module_5.Utilities
         {
             _config = config;
         }
-        public string GenerateJwtToken(int userId, string name, string email, UserRole role)
+        public string GenerateJwtToken(string userId, string name, string email, UserRole role, int tokenVersion)
         {
 
             var jwtSettings = _config.GetSection("Jwt");
@@ -23,11 +23,12 @@ namespace Module_5.Utilities
             string roleStr = Convert.ToString(role) ?? "";
 
             var claims = new List<Claim>
-            {   new(ClaimTypes.NameIdentifier, userId.ToString()),
-                new(ClaimTypes.Name, name),
-                new(ClaimTypes.Email, email),
-                new(ClaimTypes.Role, roleStr)
-            };
+                {   new(ClaimTypes.NameIdentifier, userId),
+                    new(ClaimTypes.Name, name),
+                    new(ClaimTypes.Email, email),
+                    new(ClaimTypes.Role, roleStr),
+                    new("TokenVersion", tokenVersion.ToString())
+                };
 
             var token = new JwtSecurityToken(
                     issuer: jwtSettings["Issuer"],

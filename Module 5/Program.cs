@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 using System.Reflection;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using Module_5.Middleware;
 
 
 
@@ -58,12 +61,29 @@ namespace Module_5
              .WriteTo.Console()
              .WriteTo.File("Logs/api-log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7) // Logs to file
              .CreateLogger();
-            
-            builder.Services.AddDbContext<BlogDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+          
+            builder.Services.Configure<MongoDBSettings>(
+                builder.Configuration.GetSection("MongoDBSettings"));
+
+            // 2. Register IMongoDatabase for DI
+            builder.Services.AddSingleton<IMongoClient>(sp =>
+            {
+                var settings = sp.GetRequiredService<IOptions<MongoDBSettings>>().Value;
+                return new MongoClient(settings.ConnectionString);
+            });
+
+            builder.Services.AddSingleton(sp =>
+            {
+                var settings = sp.GetRequiredService<IOptions<MongoDBSettings>>().Value;
+                var client = sp.GetRequiredService<IMongoClient>();
+                return client.GetDatabase(settings.DatabaseName);
+            });
+
+            builder.Services.AddSingleton<IMongoDbContext, MongoDbContext>();
             builder.Services.AddScoped<JwtTokenHelper>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            //builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IPostService, PostService>();
             builder.Services.AddScoped<IUserService, UserService>();
@@ -100,6 +120,7 @@ namespace Module_5
 
             var app = builder.Build();
             app.UseMiddleware<RequestResponseMiddleware>();
+            app.UseMiddleware<TokenValidationMiddleware>();
             app.UseStaticFiles();
 
             

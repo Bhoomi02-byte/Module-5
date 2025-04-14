@@ -4,10 +4,10 @@ namespace Module_5.Services
 {
     public interface IUserService
     {
-        Task<string> LikePost(int userId, int postId);
-        Task<string> UnLikePost(int userId, int postId);
-        Task<string> CreateAsync(CommentDto commentDto, int userId, int postId);
-        Task<List<object>> GetAsync(int postId);
-        Task<string> DeleteAsync(int postId, int userId, int commentId);
+        Task<string> LikePost(string userId, string postId);
+        Task<string> UnLikePost(string userId, string postId);
+        Task<string> CreateAsync(CommentDto commentDto, string userId, string postId);
+        Task<List<object>> GetAsync(string postId);
+        Task<string> DeleteAsync(string postId, string userId, string commentId);
     }
 }

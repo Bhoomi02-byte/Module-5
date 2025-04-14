@@ -51,7 +51,10 @@
     "151": "Invalid image format.",
     "152": "Image uploaded successfully",
     "153": "Image is not uploaded! Try again",
-    "154": "Validation failed due to missing content!"
+    "154": "Validation failed due to missing content!",
+    "155": "Cannot delete category. First delete all posts under this category.",
+    "156": "Logout successfully!!",
+    "157": "Logout failed or user not found."
 
 }
 
