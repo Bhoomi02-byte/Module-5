@@ -17,7 +17,15 @@ namespace Module_5.Controllers
         {
             _userservice = userService;
         }
-        //Api to like a post
+
+
+        /// <summary>
+        /// Likes a post on behalf of the logged-in user.
+        /// </summary>
+        /// <param name="postId">The ID of the post to like.</param>
+        /// <returns>
+        /// Returns a success response if the post is liked,
+        /// or a bad request if the action fails.
         [HttpPost("like/{postId}")]
         public async Task<IActionResult> Liked(string postId)
         {
@@ -34,9 +42,16 @@ namespace Module_5.Controllers
 
             return BadRequest(new ApiResponse(false, 400, isliked, null));
         }
-        // Api to unlike a post
-        [HttpDelete("unlike/{postId}")]
 
+        /// <summary>
+        /// Unlikes a post on behalf of the logged-in user.
+        /// </summary>
+        /// <param name="postId">The ID of the post to unlike.</param>
+        /// <returns>
+        /// Returns a success response if the post is unliked,
+        /// or a bad request if the action fails.
+        /// </returns>
+        [HttpDelete("unlike/{postId}")]
         public async Task<IActionResult> UnLiked(string postId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -54,8 +69,14 @@ namespace Module_5.Controllers
             return BadRequest(new ApiResponse(false, 400, isUnliked, null));
         }
 
-        //Api to comment on a post
-
+        /// <summary>
+        /// Adds a comment to a post by the logged-in user.
+        /// </summary>
+        /// <param name="postId">The ID of the post to comment on.</param>
+        /// <param name="commentDto">The comment data.</param>
+        /// <returns>
+        /// Returns a success response if the comment is added,
+        /// or a bad request if the action fails.
         [HttpPost("comment/{postId}")]
         public async Task<IActionResult> Create(string postId, [FromBody] CommentDto commentDto)
         {
@@ -74,8 +95,16 @@ namespace Module_5.Controllers
             return BadRequest(new ApiResponse(false, 400, response, null));
 
         }
-        //Api to get all comments by post
 
+
+        /// <summary>
+        /// Retrieves all comments on a specific post.
+        /// </summary>
+        /// <param name="postId">The ID of the post.</param>
+        /// <returns>
+        /// Returns a list of comments on success,
+        /// or a not found response if no comments exist.
+        /// </returns>
         [HttpGet("comment/{postId}")]
         public async Task<IActionResult> Get(string postId)
         {
@@ -88,8 +117,17 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(133), response));
 
         }
-        //Api to delete a comment
 
+
+        /// <summary>
+        /// Deletes a specific comment from a post.
+        /// </summary>
+        /// <param name="postId">The ID of the post.</param>
+        /// <param name="commentId">The ID of the comment to delete.</param>
+        /// <returns>
+        /// Returns a success response if the comment is deleted,
+        /// or a bad request if deletion fails.
+        /// </returns>
         [HttpDelete("{postId}/comment/{commentId}")]
         public async Task<IActionResult> Delete(string postId, string commentId)
         {

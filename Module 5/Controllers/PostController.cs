@@ -20,8 +20,12 @@ namespace Module_5.Controllers
             _postService = postService;
         }
 
-        //Api to create a post
-
+        /// <summary>
+        /// Creates a new post under a specified category for the logged-in author.
+        /// </summary>
+        /// <param name="categoryId">The ID of the category to associate the post with.</param>
+        /// <param name="postDto">Post data to be created.</param>
+        /// <returns>Returns a response with the created post or error message.</returns>
         [Authorize(Roles = "Author")]
         [HttpPost("{categoryId}")]
         public async Task<IActionResult> CreatePost(string categoryId, [FromBody] PostDto postDto)
@@ -42,8 +46,10 @@ namespace Module_5.Controllers
             return CreatedAtAction(nameof(CreatePost), response);
         }
 
-        //Api to get all post
-
+        /// <summary>
+        /// Retrieves all published posts.
+        /// </summary>
+        /// <returns>Returns a list of all posts or an error if it is unpublished.</returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -55,8 +61,11 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(126), posts));
         }
 
-        //Api to get post by postId
-
+        /// <summary>
+        /// Retrieves a specific post by its ID for the current user.
+        /// </summary>
+        /// <param name="postId">The ID of the post to retrieve.</param>
+        /// <returns>Returns the post if found, otherwise an error message.</returns>
         [HttpGet("{postId}")]
         public async Task<IActionResult> Get(string postId)
 
@@ -78,8 +87,11 @@ namespace Module_5.Controllers
 
         }
 
-        //Api to delete a post
-
+        /// <summary>
+        /// Deletes a post by ID if the user is its author.
+        /// </summary>
+        /// <param name="postId">The ID of the post to delete.</param>
+        /// <returns>Returns success or error based on deletion result.</returns>
         [Authorize(Roles = "Author")]
         [HttpDelete("{postId}")]
         public async Task<IActionResult> Delete(string postId)
@@ -100,8 +112,12 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(114), null));
         }
 
-        //Api to update a post
-
+        /// <summary>
+        /// Updates an existing post for the current user.
+        /// </summary>
+        /// <param name="postId">find a post by postId to update.</param>
+        /// <param name="postDto">Updated post data.</param>
+        /// <returns>Returns updated post data or error.</returns>
         [Authorize(Roles = "Author")]
         [HttpPut("{postId}")]
         public async Task<IActionResult> Update(string postId, [FromBody] PostDto postDto)
@@ -121,8 +137,11 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(115), isUpdated));
         }
 
-        //Api to publish the post
-
+        /// <summary>
+        /// Publishes a post by ID.
+        /// </summary>
+        /// <param name="postId">ID of the post to publish.</param>
+        /// <returns>Returns success or error based on the result.</returns>
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/publish")]
         public async Task<IActionResult> Publish(string postId)
@@ -141,8 +160,11 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(116), null));
         }
 
-        //Api to unpublish the post
-
+        /// <summary>
+        /// Unpublishes a post by ID.
+        /// </summary>
+        /// <param name="postId">ID of the post to unpublish.</param>
+        /// <returns>Returns success or error based on the result.</returns>
         [Authorize(Roles = "Author")]
         [HttpPatch("{postId}/unpublish")]
         public async Task<IActionResult> UnPublish(string postId)
@@ -162,6 +184,13 @@ namespace Module_5.Controllers
             return Ok(new ApiResponse(true, 200, JsonHelper.GetMessage(117), null));
         }
 
+
+        /// <summary>
+        /// Uploads an image for a specific post.
+        /// </summary>
+        /// <param name="postId">ID of the post for which the image is to be uploaded.</param>
+        /// <param name="image">Image file uploaded via form data.</param>
+        /// <returns>Returns success or error based on the result of the upload.</returns>
         [HttpPost("{postId}/upload-image")]
         public async Task<IActionResult> UploadImage(string postId, [FromForm] IFormFile image)
         {

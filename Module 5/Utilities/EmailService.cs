@@ -26,8 +26,8 @@ namespace Module_5.Utilities
                 message.To.Add(MailboxAddress.Parse(toEmail));
                 message.Subject = subject;
 
-                var bodyBuilder = new BodyBuilder { HtmlBody = body };
-                message.Body = bodyBuilder.ToMessageBody();
+                //var bodyBuilder = new BodyBuilder { HtmlBody = body };
+                //message.Body = bodyBuilder.ToMessageBody();
 
                 using var smtp = new MailKit.Net.Smtp.SmtpClient();
                 await smtp.ConnectAsync((string)_emailSettings.SmtpServer, _emailSettings.Port, SecureSocketOptions.StartTls);

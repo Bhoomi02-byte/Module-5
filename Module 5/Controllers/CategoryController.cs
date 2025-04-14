@@ -18,7 +18,16 @@ namespace Module_5.Controllers
         {
             _categoryService = categoryService;
         }
-        //Api to create a category 
+
+        /// <summary>
+        /// Creates a new category. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryDto">The details of the category to be created (name and description).</param>
+        /// <returns>
+        /// 201 Created with category info if successful,  
+        /// 400 Conflict if the category already exists,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
         [Authorize(Roles = "Author")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CategoryDto categoryDto)
@@ -43,8 +52,16 @@ namespace Module_5.Controllers
             }));
         }
 
-        //Api to delete a category by categoryId
 
+        /// <summary>
+        /// Deletes a category by its ID. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryId">The ID of the category to be deleted.</param>
+        /// <returns>
+        /// 201 OK if successfully deleted,  
+        /// 400 Conflict if deletion fails,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
         [Authorize(Roles = "Author")]
         [HttpDelete("{categoryId}")]
         public async Task<IActionResult> Delete(string categoryId)
@@ -68,7 +85,15 @@ namespace Module_5.Controllers
 
 
         }
-        //Api to get all category
+
+
+        /// <summary>
+        /// Retrieves all categories in the system.
+        /// </summary>
+        /// <returns>
+        /// 200 OK with the list of categories,  
+        /// 404 Not Found if no categories are available.
+        /// </returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -84,8 +109,16 @@ namespace Module_5.Controllers
 
         }
 
-        //Api to update a category
-
+        /// <summary>
+        /// Updates a category by ID. Only accessible to users with the Author role.
+        /// </summary>
+        /// <param name="categoryDto">The updated details of the category.</param>
+        /// <param name="categoryId">The ID of the category to update.</param>
+        /// <returns>
+        /// 201 OK if the update is successful,  
+        /// 403 Not Found if the category doesn't exist or the user is unauthorized,  
+        /// 400 Bad Request if user ID is missing.
+        /// </returns>
         [Authorize(Roles = "Author")]
         [HttpPut("{categoryId}")]
         public async Task<IActionResult> Update([FromBody] CategoryDto categoryDto, string categoryId)
@@ -105,12 +138,6 @@ namespace Module_5.Controllers
 
 
         }
-
-
-
-
-
     }
-
 }
 

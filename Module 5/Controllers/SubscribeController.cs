@@ -15,7 +15,15 @@ namespace Module_5.Controllers
         {
             _subscribeservice = subscribeservice;
         }
-        //Api to subscribe the author
+
+        /// <summary>
+        /// Subscribes the logged-in user to a specified author.
+        /// </summary>
+        /// <param name="authorId">The ID of the author to subscribe to.</param>
+        /// <returns>
+        /// Returns a success response if the subscription is successful,
+        /// or a bad request if the user is already subscribed or tries to subscribe to themselves.
+        /// </returns>
         [HttpPost("subscribe/{authorId}")]
         public async Task<IActionResult> Subscribe(string authorId)
         {
@@ -37,7 +45,16 @@ namespace Module_5.Controllers
 
 
         }
-        //Api to unsubscribe the author
+
+
+        /// <summary>
+        /// Unsubscribes the subscribed author.
+        /// </summary>
+        /// <param name="authorId">The ID of the author to unsubscribe.</param>
+        /// <returns>
+        /// Returns a success response if the unsubscription is successful,
+        /// or a bad request if the user is not subscribed or tries to unsubscribe from themselves.
+        /// </returns>
         [HttpDelete("unsubscribe/{authorId}")]
         public async Task<IActionResult> UnSubscribe(string authorId)
         {
