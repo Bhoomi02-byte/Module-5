@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 using System.Reflection;
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon;
 
 
 
@@ -24,6 +27,7 @@ namespace Module_5
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            //builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
@@ -40,6 +44,7 @@ namespace Module_5
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
 
+
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -53,6 +58,18 @@ namespace Module_5
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                 };
             });
+            var awsOptions = builder.Configuration.GetSection("AWS");
+            var accessKey = awsOptions["AccessKey"];
+            var secretKey = awsOptions["SecretKey"];
+            var region = awsOptions["Region"];
+
+            var credentials = new BasicAWSCredentials(accessKey, secretKey);
+
+            builder.Services.AddSingleton<IAmazonS3>(sp =>
+                new AmazonS3Client(credentials, RegionEndpoint.GetBySystemName(region))
+            );
+             builder.Services.AddScoped<IS3Service, S3Service>();
+
 
             Log.Logger = new LoggerConfiguration()
              .WriteTo.Console()
@@ -120,4 +137,5 @@ namespace Module_5
             app.Run();
         }
     }
+  
 }

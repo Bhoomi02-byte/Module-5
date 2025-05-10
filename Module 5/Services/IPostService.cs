@@ -13,7 +13,7 @@ namespace Module_5.Services
         Task<PostDto> UpdateAsync(int postId, int userId, PostDto postDto);
         Task<bool> PublishAsync(int postId, int userId);
         Task<bool> UnPublishAsync(int postId, int userId);
-        Task<string> UploadImageAsync(int postId,int userId, IFormFile image, HttpRequest request);
+     
 
     }
 }

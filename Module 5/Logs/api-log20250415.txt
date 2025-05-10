@@ -1,0 +1,165 @@
+2025-04-15 16:57:31.261 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T11:27:31.2604326Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.6800077 sec
+
+2025-04-15 17:14:18.953 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T11:44:18.9518066Z"
+IP Address: ::1
+Method: GET
+URL: /swagger/index.html
+Request Headers: {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","Host":"localhost:7299","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7","Cookie":"username-localhost-8888=2|1:0|10:1742625804|23:username-localhost-8888|196:eyJ1c2VybmFtZSI6ICIzN2YyOTYxZmUzZmI0ZjE3YWYyNzc4NDU1NTFjNjM0OSIsICJuYW1lIjogIkFub255bW91cyBFdWFudGhlIiwgImRpc3BsYXlfbmFtZSI6ICJBbm9ueW1vdXMgRXVhbnRoZSIsICJpbml0aWFscyI6ICJBRSIsICJjb2xvciI6IG51bGx9|58888da6208aee45a729fe4f18128bc36b6411c33110016036eda464be918e65; _xsrf=2|117e68b7|b24d43203631ea317fe0e8282a8f1b68|1742625804","Upgrade-Insecure-Requests":"1","sec-fetch-site":"none","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","sec-ch-ua":"\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","priority":"u=0, i"}
+Request Body: 
+Status Code: 404
+Response Body: 
+Execution Time: 0.2376947 sec
+
+2025-04-15 17:53:35.519 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:23:35.5191084Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/register
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"140","Postman-Token":"db19bcc0-2b30-4e99-b36d-11a46e5b96b8"}
+Request Body: {
+  "name": "Bhoomi",
+  "email": "Bhoomi14Agarwal@gmail.com",
+  "password": "######",
+  "confirmPassword": "######",
+  "userRole": 0
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"User Registered Successfully.","data":{"name":"Bhoomi","email":"Bhoomi14Agarwal@gmail.com","role":"Author"}}
+Execution Time: 13.351071 sec
+
+2025-04-15 17:53:52.271 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:23:52.2713813Z"
+IP Address: ::1
+Method: POST
+URL: /api/auth/login
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"69","Postman-Token":"da22c28d-a936-4944-aff4-46c88c65aecd"}
+Request Body: {
+  "email": "Bhoomi14Agarwal@gmail.com",
+  "password": "######"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Logged in Successfully.","data":{"name":"Bhoomi","email":"Bhoomi14Agarwal@gmail.com","role":"Author","auth_Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo"}}
+Execution Time: 0.9301834 sec
+
+2025-04-15 17:55:15.002 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:25:15.0029449Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"84","Postman-Token":"3994efd6-8a6d-45de-94cb-fef52fedc5c8"}
+Request Body: {
+  "ategoryName": "Fashion",
+  "description": "Cargo pants are out of fashion"
+}
+Status Code: 400
+Response Body: {"success":false,"statusCode":400,"message":"Validation failed due to missing content!","data":[{"field":"CategoryName","messages":["CategoryName is required."]}]}
+Execution Time: 0.2121349 sec
+
+2025-04-15 17:55:34.196 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:25:34.1962897Z"
+IP Address: ::1
+Method: POST
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"85","Postman-Token":"0266a2bb-2727-4b54-8f06-a454ad243e79"}
+Request Body: {
+  "CategoryName": "Fashion",
+  "description": "Cargo pants are out of fashion"
+}
+Status Code: 200
+Response Body: {"success":true,"statusCode":201,"message":"Category created successfully.","data":{"categoryName":"Fashion","description":"Cargo pants are out of fashion"}}
+Execution Time: 3.0643726 sec
+
+2025-04-15 17:56:13.862 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:26:13.8622770Z"
+IP Address: ::1
+Method: GET
+URL: /api/category
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Postman-Token":"91d68583-b58e-49b3-aa52-68b6c54d6f05"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":200,"message":"Categories Retreived successfully","data":[{"categoryId":1,"categoryName":"Fashion","description":"Cargo pants are out of fashion"}]}
+Execution Time: 0.399223 sec
+
+2025-04-15 17:56:34.580 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:26:34.5804445Z"
+IP Address: ::1
+Method: POST
+URL: /api/posts/1
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"96","Postman-Token":"a744917e-c656-4f26-bf1c-dac2e7acb840"}
+Request Body: {
+  "title": "Tank tops",
+  "content": "yellow color is summarise color",
+  "imageUrl": ""
+}
+Status Code: 201
+Response Body: {"success":true,"statusCode":201,"message":"Post created successfully.","data":{"id":1,"title":"Tank tops","content":"yellow color is summarise color","imageUrl":"","authorName":"Bhoomi","categoryName":"Fashion"}}
+Execution Time: 1.7007679 sec
+
+2025-04-15 17:56:45.819 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:26:45.8193507Z"
+IP Address: ::1
+Method: PATCH
+URL: /api/posts/1/publish
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0Mzg5MjY4MSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ._cIArcolmqdKwWiNNKHlnbo7D4SxDoPXDSrtOqm_noQ","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"12f2426b-8433-4b83-acdc-5f048f24c90f"}
+Request Body: 
+Status Code: 401
+Response Body: 
+Execution Time: 0.0213052 sec
+
+2025-04-15 17:56:54.269 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:26:54.2693269Z"
+IP Address: ::1
+Method: PATCH
+URL: /api/posts/1/publish
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"cea45dd3-189c-48d7-9adc-f27da0e54881"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":200,"message":"Post published successfully.","data":{}}
+Execution Time: 0.8357372 sec
+
+2025-04-15 17:57:00.925 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:27:00.9252254Z"
+IP Address: ::1
+Method: GET
+URL: /api/posts
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Cache-Control":"no-cache","Postman-Token":"91369c4e-59f0-47ef-b95e-5c9322d9beb0"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":200,"message":"Post Retreived successfully","data":[{"postId":1,"title":"Tank tops","content":"yellow color is summarise color","imageUrl":"","authorName":"Bhoomi","categoryName":"Fashion","isPublished":true}]}
+Execution Time: 0.6012205 sec
+
+2025-04-15 17:58:21.726 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:28:21.7264819Z"
+IP Address: ::1
+Method: POST
+URL: /api/post/comment/1
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Type":"application/json","Content-Length":"26","Postman-Token":"2790239f-6ffe-480a-b36f-655310555e7a"}
+Request Body: {
+  "text": "Great!"
+}
+
+Status Code: 200
+Response Body: {"success":true,"statusCode":200,"message":"Comment Added successfully","data":{}}
+Execution Time: 0.9651684 sec
+
+2025-04-15 17:59:04.621 +05:30 [INF] API Hit Log
+Timestamp: "2025-04-15T12:29:04.6216905Z"
+IP Address: ::1
+Method: POST
+URL: /api/post/like/1
+Request Headers: {"Accept":"*/*","Connection":"keep-alive","Host":"localhost:7299","User-Agent":"PostmanRuntime/7.43.3","Accept-Encoding":"gzip, deflate, br","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQmhvb21pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiQmhvb21pMTRBZ2Fyd2FsQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkF1dGhvciIsImV4cCI6MTc0NDczMTgzMiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.BMYIs9-ZEmDLrWsltBE3JuKlqiV0nRsdwMKhm7FTSfo","Cache-Control":"no-cache","Content-Length":"0","Postman-Token":"e1914511-d2ee-4775-b8c9-050adf791d9b"}
+Request Body: 
+Status Code: 200
+Response Body: {"success":true,"statusCode":200,"message":"Post liked successfully","data":{}}
+Execution Time: 1.2069597 sec
+

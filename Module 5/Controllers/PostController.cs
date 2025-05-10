@@ -14,10 +14,13 @@ namespace Module_5.Controllers
     public class PostController:ControllerBase
     {
         private readonly IPostService _postService;
+        private readonly IS3Service _s3Service;
 
-        public PostController(IPostService postService)
+
+        public PostController(IPostService postService, IS3Service s3Service)
         {
             _postService = postService;
+            _s3Service = s3Service;
         }
 
         //Api to create a post
@@ -154,12 +157,22 @@ namespace Module_5.Controllers
             if (image == null || image.Length == 0)
                 return BadRequest(new ApiResponse(false,400, JsonHelper.GetMessage(153), null));
 
-            var result = await _postService.UploadImageAsync(postId,userId, image, Request);
+            var result = await _s3Service.UploadImageAsync(postId,userId, image, Request);
 
             if (result == JsonHelper.GetMessage(152))
                 return Ok(new ApiResponse(true,201,result,null));
 
             return BadRequest(new ApiResponse(false,400,result,null ));
+        }
+
+        [HttpGet("presigned-url")]
+        public IActionResult GetPresignedUrl([FromQuery] string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+                return BadRequest(new ApiResponse(false, 400,"File name is required.",null));
+
+            var presignedUrl = _s3Service.GeneratePresignedUrl(fileName);
+            return Ok(new ApiResponse(true, 200,"", presignedUrl));
         }
 
     }
